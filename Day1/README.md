@@ -128,8 +128,8 @@ mvn help:effective-settings
 ```
 
 Expected output
-<pre>
- jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn help:effective-settings
+```
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn help:effective-settings
 [INFO] Scanning for projects...
 [INFO] 
 [INFO] -------------------------< org.tektutor:hello >-------------------------
@@ -174,7 +174,7 @@ Effective user-specific configuration settings:
 [INFO] Total time:  0.454 s
 [INFO] Finished at: 2023-07-31T13:47:26+05:30
 [INFO] ------------------------------------------------------------------------
-</pre>
+```
 
 ## Lab - Listing the default lifecycle phases
 ```
