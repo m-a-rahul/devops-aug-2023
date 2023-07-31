@@ -1039,7 +1039,12 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.jar
 Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.jar (2.2 kB at 6.1 kB/s)
 Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.pom
-Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.pom (698 B at 9.6 kB/s)
+Uploaded to jfrog: http://localhost:8082/artifactory/tek    <server>
+      <id>jfrog</id>
+      <username>admin</username>
+      <password>Admin@123</password>
+    </server>
+tutor/org/tektutor/hello/1.0.0/hello-1.0.0.pom (698 B at 9.6 kB/s)
 Downloading from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml
 Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml
 Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml (297 B at 6.9 kB/s)
@@ -1047,10 +1052,22 @@ Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  1.707 s
-[INFO] Finished at: 2023-07-31T15:31:28+05:30
+[INFO] Finished at: 2023-07-31T15:31:28+05:30    <server>
+      <id>jfrog</id>
+      <username>admin</username>
+      <password>Admin@123</password>
+    </server>
+
 [INFO] ------------------------------------------------------------------------
 
+
+
 ## Lab - Deploying your application binaries onto JFrog Artifactory Server
+
+Configuring your maven settings.xml with the JFrog Artifactory Login credentials
+![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/00b3485c-6156-4f82-980b-025fe7d9d1d8)
+
+
 ```
 cd ~/devops-aug-2023/Day1/hello
 mvn deploy
