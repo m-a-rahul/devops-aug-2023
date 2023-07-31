@@ -847,7 +847,7 @@ compiler:testCompile
 
 [INFO] ------------------------------------------jfrog-img1.png------------------------------
 [INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
+[INFO] ----------------------------------------------Admin@123--------------------------
 [INFO] Total time:  0.875 s
 [INFO] Finished at: 2023-07-31T14:15:32+05:30
 [INFO] ------------------------------------------------------------------------
@@ -980,8 +980,8 @@ password - password
 ![JFrog Artifactory Login Page](jfrog-img3.png)
 You can change the password as
 <pre>
-new password - Admin123
-confirm password - Admin123
+new password - Admin@123
+confirm password - Admin@123
 </pre>
 
 ![JFrog Artifactory Login Page](jfrog-img4.png)
