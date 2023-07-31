@@ -900,8 +900,14 @@ router started. PID: 3624
 ```
 http://localhost:8081
 ```
-
+You can with the below login credentials
+<pre>
+username - admin
+password - password
+</pre>
 ![JFrog Artifactory Login Page](jfrog-img1.png)
+
+
 ![JFrog Artifactory Login Page](jfrog-img2.png)
 ![JFrog Artifactory Login Page](jfrog-img3.png)
 ![JFrog Artifactory Login Page](jfrog-img4.png)
