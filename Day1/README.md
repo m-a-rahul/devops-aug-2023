@@ -894,3 +894,11 @@ router started. PID: 3624
 ###   All services started successfully in 38.440 seconds   ###
 ###############################################################  
 </pre>
+
+
+## Lab - Accessing the JFrog Artifactory Dashboard from Google Chrome Web browser
+```
+http://localhost:8081
+```
+
+![JFrog Artifactory Login Page](jfrog-img1.png)
