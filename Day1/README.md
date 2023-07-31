@@ -106,7 +106,10 @@ latest: Pulling from jfrog/artifactory-oss
 cfc904e77204: Pull complete 
 63a703e420ee: Pull complete 
 4f4fb700ef54: Pull complete 
-32a0063a4870: Pull complete 
+32a0063a4870: Pull complete g++ -c src/main.cpp -o bin/main.o
+g++ -c src/hello.cpp -o bin/hello.o
+g++ bin/main.o bin/hello.o -lstdc++ -o bin/app.exe
+
 d5306c2a7213: Pull complete 
 737f65734674: Pull complete 
 d77b8a8aa616: Pull complete 
@@ -854,7 +857,7 @@ compiler:testCompile
 </pre>
 
 
-## Lab - Creating JFrog Artifactory server using docker
+## ⛹️‍♂️ Lab - Creating JFrog Artifactory server using docker
 ```
 docker run --name artifactory  -d -p 8081-8082:8081-8082 releases-docker.jfrog.io/jfrog/artifactory-oss:latest
 ```
@@ -886,7 +889,7 @@ CONTAINER ID   IMAGE                                                   COMMAND  
 40549d3aaa65   releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   28 seconds ago   Up 26 seconds   0.0.0.0:8081-8082->8081-8082/tcp, :::8081-8082->8081-8082/tcp   artifactory
 </pre>
 
-## Running JFrog Artifactory servers via Docker container
+## ⛹️‍♂️ Lab - Running JFrog Artifactory servers via Docker container
 ```
 docker logs -f artifactory
 ```
@@ -964,7 +967,7 @@ router started. PID: 3624
 </pre>
 
 
-## Lab - Accessing the JFrog Artifactory Dashboard from Google Chrome Web browser
+## ⛹️‍♂️ Lab - Accessing the JFrog Artifactory Dashboard from Google Chrome Web browser
 ```
 http://localhost:8081
 ```
@@ -1063,7 +1066,7 @@ Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello
 [INFO] ------------------------------------------------------------------------
 </pre>
 
-## Lab - Deploying your application binaries onto JFrog Artifactory Server
+## ⛹️‍♂️ Lab - Deploying your application binaries onto JFrog Artifactory Server
 
 Configuring your maven settings.xml with the JFrog Artifactory Login credentials
 ![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/00b3485c-6156-4f82-980b-025fe7d9d1d8)
@@ -1139,3 +1142,71 @@ You may check the deployed binaries at the below URL
 http://localhost:8082/ui/native/tektutor/org/tektutor/hello/1.0.0/ 
 </pre>
 ![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/6bfbc282-41cf-4fce-9020-73fc2197bee1)
+
+## ⛹️‍♂️ Lab - Compiling C++ project using Maven build tool
+In this exercise, you will learn 
+- how to disable maven plugins from getting during certain phases
+- how to enable custom third-party plugsin during certain phases
+- hence this technic will help you build any projects eg: NodeJS, ReactJS, Angular JS, Python, C#, etc.,
+
+```
+cd ~/Day1/c++-project
+mvn compile
+ls -l bin
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/c++-project$ <b>mvn compile</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< org.tektutor:cpp-hello >-----------------------
+[INFO] Building cpp-hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:3.1.0:exec (custom-compile) @ cpp-hello ---
+g++ -c src/main.cpp -o bin/main.o
+g++ -c src/hello.cpp -o bin/hello.o
+g++ bin/main.o bin/hello.o -lstdc++ -o bin/app.exe
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.836 s
+[INFO] Finished at: 2023-07-31T17:10:38+05:30
+[INFO] ------------------------------------------------------------------------  
+
+jegan@tektutor.org:~/devops-aug-2023/Day1/c++-project$ <b>ls -l bin</b>
+total 40
+-rwxrwxr-x 1 jegan jegan 23656 Jul 31 17:11 app.exe
+-rw-rw-r-- 1 jegan jegan 11232 Jul 31 17:11 hello.o
+-rw-rw-r-- 1 jegan jegan  2552 Jul 31 17:11 main.o
+</pre>
+
+Delete the application binaries from bin folder
+```
+cd ~/Day1/c++-project
+mvn clean
+ls -l bin
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/c++-project$ mvn clean
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< org.tektutor:cpp-hello >-----------------------
+[INFO] Building cpp-hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:3.1.0:exec (custom-clean) @ cpp-hello ---
+rm -rf bin/*.o bin/*.exe
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.241 s
+[INFO] Finished at: 2023-07-31T17:12:06+05:30
+[INFO] ------------------------------------------------------------------------
+  
+jegan@tektutor.org:~/devops-aug-2023/Day1/c++-project$ ls -l bin
+total 0  
+</pre>
