@@ -973,6 +973,7 @@ You can with the below login credentials
 username - admin
 password - password
 </pre>
+
 ![JFrog Artifactory Login Page](jfrog-img1.png)
 
 
@@ -986,13 +987,19 @@ confirm password - Admin@123
 
 ![JFrog Artifactory Login Page](jfrog-img4.png)
 You can skip
+
 ![JFrog Artifactory Login Page](jfrog-img5.png)
 You can skip
+
 ![JFrog Artifactory Login Page](jfrog-img6.png)
 You can skip
 
 ![JFrog Artifactory Login Page](jfrog-img7.png)
 You can click on Finish button
+
+
+Now you may try deploying your application binaires as shown below
+<pre>
 jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn deploy
 [INFO] Scanning for projects...
 [INFO] 
@@ -1052,15 +1059,9 @@ Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  1.707 s
-[INFO] Finished at: 2023-07-31T15:31:28+05:30    <server>
-      <id>jfrog</id>
-      <username>admin</username>
-      <password>Admin@123</password>
-    </server>
-
+[INFO] Finished at: 2023-07-31T15:31:28+05:30   
 [INFO] ------------------------------------------------------------------------
-
-
+</pre>
 
 ## Lab - Deploying your application binaries onto JFrog Artifactory Server
 
