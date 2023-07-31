@@ -90,6 +90,42 @@ jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>mvn compile</b>
 [INFO] Finished at: 2023-07-31T12:53:22+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
+## Lab - Creating JFrog Artifactory server using docker
+```
+docker run --name artifactory  -d -p 8081-8082:8081-8082 releases-docker.jfrog.io/jfrog/artifactory-oss:latest
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>docker run --name artifactory  -d -p 8081-8082:8081-8082 releases-docker.jfrog.io/jfrog/artifactory-oss:latest</b>
+Unable to find image 'releases-docker.jfrog.io/jfrog/artifactory-oss:latest' locally
+latest: Pulling from jfrog/artifactory-oss
+87214d1f45a2: Pull complete 
+170097c625cc: Pull complete 
+9a8bfd113e01: Pull complete 
+cfc904e77204: Pull complete 
+63a703e420ee: Pull complete 
+4f4fb700ef54: Pull complete 
+32a0063a4870: Pull complete 
+d5306c2a7213: Pull complete 
+737f65734674: Pull complete 
+d77b8a8aa616: Pull complete 
+Digest: sha256:72fdaf55c7227fdd01e945f4d22e6c62483b0ebb166411b1106a2c17fd4d94a4
+Status: Downloaded newer image for releases-docker.jfrog.io/jfrog/artifactory-oss:latest
+40549d3aaa65b09fc2b3a038428fd68d3dbc7f8d82668a173b8b2b74dbdcc742
+</pre>
+
+Checking if the JFrog server server is up and running
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>docker ps</b>
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED          STATUS          PORTS                                                           NAMES
+40549d3aaa65   releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   28 seconds ago   Up 26 seconds   0.0.0.0:8081-8082->8081-8082/tcp, :::8081-8082->8081-8082/tcp   artifactory
+</pre>
+
+Checking the JFrog artifactory logs
+```
+docker logs -f artifactory
+```
 
 
 ## ⛹️‍♀️ Lab - Cleaning your project binary output folder(target -folder)
@@ -817,6 +853,38 @@ compiler:testCompile
 [INFO] ------------------------------------------------------------------------
 </pre>
 
+
+## Lab - Creating JFrog Artifactory server using docker
+```
+docker run --name artifactory  -d -p 8081-8082:8081-8082 releases-docker.jfrog.io/jfrog/artifactory-oss:latest
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>docker run --name artifactory  -d -p 8081-8082:8081-8082 releases-docker.jfrog.io/jfrog/artifactory-oss:latest</b>
+Unable to find image 'releases-docker.jfrog.io/jfrog/artifactory-oss:latest' locally
+latest: Pulling from jfrog/artifactory-oss
+87214d1f45a2: Pull complete 
+170097c625cc: Pull complete 
+9a8bfd113e01: Pull complete 
+cfc904e77204: Pull complete 
+63a703e420ee: Pull complete 
+4f4fb700ef54: Pull complete 
+32a0063a4870: Pull complete 
+d5306c2a7213: Pull complete 
+737f65734674: Pull complete 
+d77b8a8aa616: Pull complete 
+Digest: sha256:72fdaf55c7227fdd01e945f4d22e6c62483b0ebb166411b1106a2c17fd4d94a4
+Status: Downloaded newer image for releases-docker.jfrog.io/jfrog/artifactory-oss:latest
+40549d3aaa65b09fc2b3a038428fd68d3dbc7f8d82668a173b8b2b74dbdcc742
+</pre>
+
+Checking if the JFrog server server is up and running
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>docker ps</b>
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED          STATUS          PORTS                                                           NAMES
+40549d3aaa65   releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   28 seconds ago   Up 26 seconds   0.0.0.0:8081-8082->8081-8082/tcp, :::8081-8082->8081-8082/tcp   artifactory
+</pre>
 
 ## Running JFrog Artifactory servers via Docker container
 ```
