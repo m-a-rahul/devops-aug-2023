@@ -809,7 +809,7 @@ compiler:testCompile
       Set to true to show messages about what the compiler is doing.
 
 
-[INFO] ------------------------------------------------------------------------
+[INFO] ------------------------------------------jfrog-img1.png------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  0.875 s
@@ -824,7 +824,7 @@ docker logs -f artifactory
 ```
 
 Expected output
-<pre>
+<pre>jfrog-img1.png
 jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ docker logs -f artifactory
 Preparing to run Artifactory in Docker
 Running as uid=1030(artifactory) gid=1030(artifactory) groups=1030(artifactory)
@@ -834,7 +834,7 @@ Copying Artifactory bootstrap files
 2023-07-31T09:33:20.999Z [shell] [INFO ] [] [installerCommon.sh:1601       ] [main] - Checking open files and processes limits
 2023-07-31T09:33:21.040Z [shell] [INFO ] [] [installerCommon.sh:1604       ] [main] - Current max open files is 1048576
 2023-07-31T09:33:21.083Z [shell] [INFO ] [] [installerCommon.sh:1615       ] [main] - Current max open processes is unlimited
-[WARN ] Error while initializing File resolver : Config file does not exists : /opt/jfrog/artifactory/var/etc/system.yaml
+[WARN ] Error while initializing File resolver : Config file does not exists : /opt/jfrog/artifactory/var/etc/system.yamljfrog-img1.png
 
 Database connection check failed Could not determine database type
 2023-07-31T09:33:21.200Z [shell] [INFO ] [] [installerCommon.sh:1684       ] [main] - Testing directory /opt/jfrog/artifactory/var has read/write permissions for user id 1030
@@ -910,6 +910,12 @@ password - password
 
 ![JFrog Artifactory Login Page](jfrog-img2.png)
 ![JFrog Artifactory Login Page](jfrog-img3.png)
+You can change the password as
+<pre>
+new password - Admin123
+confirm password - Admin123
+</pre>
+
 ![JFrog Artifactory Login Page](jfrog-img4.png)
 You can skip
 ![JFrog Artifactory Login Page](jfrog-img5.png)
