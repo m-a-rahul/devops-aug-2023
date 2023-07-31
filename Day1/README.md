@@ -1210,3 +1210,272 @@ rm -rf bin/*.o bin/*.exe
 jegan@tektutor.org:~/devops-aug-2023/Day1/c++-project$ ls -l bin
 total 0  
 </pre>
+
+## Lab - Multi module project
+```
+cd ~/devops-aug-2023
+git pull
+cd Day1/multi-module-project
+mvn deploy
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/multi-module-project$ mvn deploy
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] crm                                                                [pom]
+[INFO] dal                                                                [jar]
+[INFO] bl                                                                 [jar]
+[INFO] fe                                                                 [jar]
+[INFO] main                                                               [jar]
+[INFO] 
+[INFO] --------------------------< org.tektutor:crm >--------------------------
+[INFO] Building crm 1.0.0                                                 [1/5]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ crm ---
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/multi-module-project/pom.xml to /home/jegan/.m2/repository/org/tektutor/crm/1.0.0/crm-1.0.0.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ crm ---
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/crm/1.0.0/crm-1.0.0.pom
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/crm/1.0.0/crm-1.0.0.pom (764 B at 5.0 kB/s)
+Downloading from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/crm/maven-metadata.xml
+Downloaded from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/crm/maven-metadata.xml (370 B at 13 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/crm/maven-metadata.xml
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/crm/maven-metadata.xml (322 B at 11 kB/s)
+[INFO] 
+[INFO] --------------------------< org.tektutor:dal >--------------------------
+[INFO] Building dal 1.0.0                                                 [2/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ dal ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/multi-module-project/dal/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ dal ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-aug-2023/Day1/multi-module-project/dal/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ dal ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/multi-module-project/dal/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ dal ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-aug-2023/Day1/multi-module-project/dal/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ dal ---
+[INFO] Surefire report directory: /home/jegan/devops-aug-2023/Day1/multi-module-project/dal/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.DataAccessLayerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ dal ---
+[INFO] Building jar: /home/jegan/devops-aug-2023/Day1/multi-module-project/dal/target/dal-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ dal ---
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/multi-module-project/dal/target/dal-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/dal/1.0.0/dal-1.0.0.jar
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/multi-module-project/dal/pom.xml to /home/jegan/.m2/repository/org/tektutor/dal/1.0.0/dal-1.0.0.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ dal ---
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/dal/1.0.0/dal-1.0.0.jar
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/dal/1.0.0/dal-1.0.0.jar (1.9 kB at 41 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/dal/1.0.0/dal-1.0.0.pom
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/dal/1.0.0/dal-1.0.0.pom (261 B at 6.2 kB/s)
+Downloading from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/dal/maven-metadata.xml
+Downloaded from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/dal/maven-metadata.xml (370 B at 19 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/dal/maven-metadata.xml
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/dal/maven-metadata.xml (322 B at 10 kB/s)
+[INFO] 
+[INFO] --------------------------< org.tektutor:bl >---------------------------
+[INFO] Building bl 1.0.0                                                  [3/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ bl ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/multi-module-project/bl/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ bl ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-aug-2023/Day1/multi-module-project/bl/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ bl ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/multi-module-project/bl/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ bl ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-aug-2023/Day1/multi-module-project/bl/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ bl ---
+[INFO] Surefire report directory: /home/jegan/devops-aug-2023/Day1/multi-module-project/bl/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.BusinessLayerTest
+DataAccessLayer
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ bl ---
+[INFO] Building jar: /home/jegan/devops-aug-2023/Day1/multi-module-project/bl/target/bl-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ bl ---
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/multi-module-project/bl/target/bl-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/bl/1.0.0/bl-1.0.0.jar
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/multi-module-project/bl/pom.xml to /home/jegan/.m2/repository/org/tektutor/bl/1.0.0/bl-1.0.0.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ bl ---
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/bl/1.0.0/bl-1.0.0.jar
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/bl/1.0.0/bl-1.0.0.jar (2.0 kB at 52 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/bl/1.0.0/bl-1.0.0.pom
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/bl/1.0.0/bl-1.0.0.pom (419 B at 10 kB/s)
+Downloading from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/bl/maven-metadata.xml
+Downloaded from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/bl/maven-metadata.xml (369 B at 19 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/bl/maven-metadata.xml
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/bl/maven-metadata.xml (321 B at 12 kB/s)
+[INFO] 
+[INFO] --------------------------< org.tektutor:fe >---------------------------
+[INFO] Building fe 1.0.0                                                  [4/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ fe ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/multi-module-project/fe/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ fe ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-aug-2023/Day1/multi-module-project/fe/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ fe ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/multi-module-project/fe/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ fe ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-aug-2023/Day1/multi-module-project/fe/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ fe ---
+[INFO] Surefire report directory: /home/jegan/devops-aug-2023/Day1/multi-module-project/fe/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.FrontendTest
+DataAccessLayer
+BusinessLayer
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ fe ---
+[INFO] Building jar: /home/jegan/devops-aug-2023/Day1/multi-module-project/fe/target/fe-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ fe ---
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/multi-module-project/fe/target/fe-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/fe/1.0.0/fe-1.0.0.jar
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/multi-module-project/fe/pom.xml to /home/jegan/.m2/repository/org/tektutor/fe/1.0.0/fe-1.0.0.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ fe ---
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/fe/1.0.0/fe-1.0.0.jar
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/fe/1.0.0/fe-1.0.0.jar (2.0 kB at 48 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/fe/1.0.0/fe-1.0.0.pom
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/fe/1.0.0/fe-1.0.0.pom (419 B at 10 kB/s)
+Downloading from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/fe/maven-metadata.xml
+Downloaded from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/fe/maven-metadata.xml (369 B at 20 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/fe/maven-metadata.xml
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/fe/maven-metadata.xml (321 B at 8.9 kB/s)
+[INFO] 
+[INFO] -------------------------< org.tektutor:main >--------------------------
+[INFO] Building main 1.0.0                                                [5/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ main ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/multi-module-project/main/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ main ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-aug-2023/Day1/multi-module-project/main/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ main ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/multi-module-project/main/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ main ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-aug-2023/Day1/multi-module-project/main/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ main ---
+[INFO] Surefire report directory: /home/jegan/devops-aug-2023/Day1/multi-module-project/main/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.MainTest
+DataAccessLayer
+BusinessLayer
+Frontend
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ main ---
+[INFO] Building jar: /home/jegan/devops-aug-2023/Day1/multi-module-project/main/target/main-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ main ---
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/multi-module-project/main/target/main-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/main/1.0.0/main-1.0.0.jar
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/multi-module-project/main/pom.xml to /home/jegan/.m2/repository/org/tektutor/main/1.0.0/main-1.0.0.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ main ---
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/main/1.0.0/main-1.0.0.jar
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/main/1.0.0/main-1.0.0.jar (2.0 kB at 49 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/main/1.0.0/main-1.0.0.pom
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/main/1.0.0/main-1.0.0.pom (421 B at 10 kB/s)
+Downloading from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/main/maven-metadata.xml
+Downloaded from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/main/maven-metadata.xml (371 B at 17 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/main/maven-metadata.xml
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/main/maven-metadata.xml (323 B at 12 kB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for crm 1.0.0:
+[INFO] 
+[INFO] crm ................................................ SUCCESS [  0.621 s]
+[INFO] dal ................................................ SUCCESS [  1.305 s]
+[INFO] bl ................................................. SUCCESS [  0.432 s]
+[INFO] fe ................................................. SUCCESS [  0.451 s]
+[INFO] main ............................................... SUCCESS [  0.439 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.339 s
+[INFO] Finished at: 2023-07-31T17:55:46+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
