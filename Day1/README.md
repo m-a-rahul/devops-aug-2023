@@ -90,6 +90,42 @@ jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>mvn compile</b>
 [INFO] Finished at: 2023-07-31T12:53:22+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
+## Lab - Creating JFrog Artifactory server using docker
+```
+docker run --name artifactory  -d -p 8081-8082:8081-8082 releases-docker.jfrog.io/jfrog/artifactory-oss:latest
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>docker run --name artifactory  -d -p 8081-8082:8081-8082 releases-docker.jfrog.io/jfrog/artifactory-oss:latest</b>
+Unable to find image 'releases-docker.jfrog.io/jfrog/artifactory-oss:latest' locally
+latest: Pulling from jfrog/artifactory-oss
+87214d1f45a2: Pull complete 
+170097c625cc: Pull complete 
+9a8bfd113e01: Pull complete 
+cfc904e77204: Pull complete 
+63a703e420ee: Pull complete 
+4f4fb700ef54: Pull complete 
+32a0063a4870: Pull complete 
+d5306c2a7213: Pull complete 
+737f65734674: Pull complete 
+d77b8a8aa616: Pull complete 
+Digest: sha256:72fdaf55c7227fdd01e945f4d22e6c62483b0ebb166411b1106a2c17fd4d94a4
+Status: Downloaded newer image for releases-docker.jfrog.io/jfrog/artifactory-oss:latest
+40549d3aaa65b09fc2b3a038428fd68d3dbc7f8d82668a173b8b2b74dbdcc742
+</pre>
+
+Checking if the JFrog server server is up and running
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>docker ps</b>
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED          STATUS          PORTS                                                           NAMES
+40549d3aaa65   releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   28 seconds ago   Up 26 seconds   0.0.0.0:8081-8082->8081-8082/tcp, :::8081-8082->8081-8082/tcp   artifactory
+</pre>
+
+Checking the JFrog artifactory logs
+```
+docker logs -f artifactory
+```
 
 
 ## ⛹️‍♀️ Lab - Cleaning your project binary output folder(target -folder)
@@ -809,11 +845,296 @@ compiler:testCompile
       Set to true to show messages about what the compiler is doing.
 
 
-[INFO] ------------------------------------------------------------------------
+[INFO] ------------------------------------------jfrog-img1.png------------------------------
 [INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
+[INFO] ----------------------------------------------Admin@123--------------------------
 [INFO] Total time:  0.875 s
 [INFO] Finished at: 2023-07-31T14:15:32+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
 
+
+## Lab - Creating JFrog Artifactory server using docker
+```
+docker run --name artifactory  -d -p 8081-8082:8081-8082 releases-docker.jfrog.io/jfrog/artifactory-oss:latest
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>docker run --name artifactory  -d -p 8081-8082:8081-8082 releases-docker.jfrog.io/jfrog/artifactory-oss:latest</b>
+Unable to find image 'releases-docker.jfrog.io/jfrog/artifactory-oss:latest' locally
+latest: Pulling from jfrog/artifactory-oss
+87214d1f45a2: Pull complete 
+170097c625cc: Pull complete 
+9a8bfd113e01: Pull complete 
+cfc904e77204: Pull complete 
+63a703e420ee: Pull complete 
+4f4fb700ef54: Pull complete 
+32a0063a4870: Pull complete 
+d5306c2a7213: Pull complete 
+737f65734674: Pull complete 
+d77b8a8aa616: Pull complete 
+Digest: sha256:72fdaf55c7227fdd01e945f4d22e6c62483b0ebb166411b1106a2c17fd4d94a4
+Status: Downloaded newer image for releases-docker.jfrog.io/jfrog/artifactory-oss:latest
+40549d3aaa65b09fc2b3a038428fd68d3dbc7f8d82668a173b8b2b74dbdcc742
+</pre>
+
+Checking if the JFrog server server is up and running
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>docker ps</b>
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED          STATUS          PORTS                                                           NAMES
+40549d3aaa65   releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   28 seconds ago   Up 26 seconds   0.0.0.0:8081-8082->8081-8082/tcp, :::8081-8082->8081-8082/tcp   artifactory
+</pre>
+
+## Running JFrog Artifactory servers via Docker container
+```
+docker logs -f artifactory
+```
+
+Expected output
+<pre>jfrog-img1.png
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ docker logs -f artifactory
+Preparing to run Artifactory in Docker
+Running as uid=1030(artifactory) gid=1030(artifactory) groups=1030(artifactory)
+Dockerfile for this image can found inside the container.
+To view the Dockerfile: 'cat /docker/artifactory-oss/Dockerfile.artifactory'.
+Copying Artifactory bootstrap files
+2023-07-31T09:33:20.999Z [shell] [INFO ] [] [installerCommon.sh:1601       ] [main] - Checking open files and processes limits
+2023-07-31T09:33:21.040Z [shell] [INFO ] [] [installerCommon.sh:1604       ] [main] - Current max open files is 1048576
+2023-07-31T09:33:21.083Z [shell] [INFO ] [] [installerCommon.sh:1615       ] [main] - Current max open processes is unlimited
+[WARN ] Error while initializing File resolver : Config file does not exists : /opt/jfrog/artifactory/var/etc/system.yamljfrog-img1.png
+
+Database connection check failed Could not determine database type
+2023-07-31T09:33:21.200Z [shell] [INFO ] [] [installerCommon.sh:1684       ] [main] - Testing directory /opt/jfrog/artifactory/var has read/write permissions for user id 1030
+2023-07-31T09:33:21.245Z [shell] [INFO ] [] [installerCommon.sh:1699       ] [main] - Permissions for /opt/jfrog/artifactory/var are good
+2023-07-31T09:33:21.936Z [shell] [INFO ] [] [installerCommon.sh:3477       ] [main] - Setting JF_SHARED_NODE_ID to 40549d3aaa65
+2023-07-31T09:33:22.065Z [shell] [INFO ] [] [installerCommon.sh:3477       ] [main] - Setting JF_SHARED_NODE_IP to 172.17.0.2
+2023-07-31T09:33:22.193Z [shell] [INFO ] [] [installerCommon.sh:3477       ] [main] - Setting JF_SHARED_NODE_NAME to 40549d3aaa65
+2023-07-31T09:33:23.616Z [shell] [INFO ] [] [artifactoryCommon.sh:438      ] [main] - Removing old custom drivers : /opt/jfrog/artifactory/app/artifactory/tomcat/lib/jf_*
+2023-07-31T09:33:23.658Z [shell] [INFO ] [] [artifactoryCommon.sh:443      ] [main] - Copying /opt/jfrog/artifactory/var/bootstrap/artifactory/tomcat/lib/README.md to /opt/jfrog/artifactory/app/artifactory/tomcat/lib/jf_README.md
+2023-07-31T09:33:24.039Z [shell] [INFO ] [] [artifactoryCommon.sh:213      ] [main] - Saving /opt/jfrog/artifactory/app/artifactory/tomcat/conf/server.xml as /opt/jfrog/artifactory/app/artifactory/tomcat/conf/server.xml.orig
+2023-07-31T09:33:24.092Z [shell] [INFO ] [] [artifactoryCommon.sh:221      ] [main] - Using Tomcat template to generate : /opt/jfrog/artifactory/app/artifactory/tomcat/conf/server.xml
+2023-07-31T09:33:24.243Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${artifactory.port||8081} to default value : 8081
+2023-07-31T09:33:24.366Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${artifactory.tomcat.connector.sendReasonPhrase||false} to default value : false
+2023-07-31T09:33:24.495Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${artifactory.tomcat.connector.relaxedPathChars||_SQUARE_BRACKETS_} to default value : _SQUARE_BRACKETS_
+2023-07-31T09:33:24.629Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${artifactory.tomcat.connector.relaxedQueryChars||_SQUARE_BRACKETS_} to default value : _SQUARE_BRACKETS_
+2023-07-31T09:33:24.756Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${artifactory.tomcat.connector.maxThreads||200} to default value : 200
+2023-07-31T09:33:24.967Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${artifactory.tomcat.maintenanceConnector.port||8091} to default value : 8091
+2023-07-31T09:33:25.096Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${artifactory.tomcat.maintenanceConnector.maxThreads||5} to default value : 5
+2023-07-31T09:33:25.219Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${artifactory.tomcat.maintenanceConnector.acceptCount||5} to default value : 5
+2023-07-31T09:33:25.426Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${access.http.port||8040} to default value : 8040
+2023-07-31T09:33:25.551Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${access.tomcat.connector.sendReasonPhrase||false} to default value : false
+2023-07-31T09:33:25.678Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${access.tomcat.connector.maxThreads||50} to default value : 50
+2023-07-31T09:33:25.926Z [shell] [INFO ] [] [systemYamlHelper.sh:607       ] [main] - Resolved JF_PRODUCT_HOME (/opt/jfrog/artifactory) from environment variable
+2023-07-31T09:33:26.116Z [shell] [INFO ] [] [systemYamlHelper.sh:967       ] [main] - Resolved ${shared.tomcat.workDir||/opt/jfrog/artifactory/var/work/artifactory/tomcat} to default value : /opt/jfrog/artifactory/var/work/artifactory/tomcat
+
+========================
+JF Environment variables
+========================
+
+JF_ARTIFACTORY_USER                 : artifactory
+JF_SHARED_NODE_ID                   : 40549d3aaa65
+JF_SHARED_NODE_IP                   : 172.17.0.2
+JF_ARTIFACTORY_PID                  : /opt/jfrog/artifactory/app/run/artifactory.pid
+JF_PRODUCT_DATA_INTERNAL            : /var/opt/jfrog/artifactory
+JF_SYSTEM_YAML                      : /opt/jfrog/artifactory/var/etc/system.yaml
+JF_PRODUCT_HOME                     : /opt/jfrog/artifactory
+JF_ROUTER_TOPOLOGY_LOCAL_REQUIREDSERVICETYPES : jfrt,jfac,jfmd,jffe,jfob,jfint,jfevt
+JF_SHARED_NODE_NAME                 : 40549d3aaa65
+Using default router's certificate and private key
+Starting router...
+router not running. Proceed to start it up.
+router started. PID: 3624
+2023-07-31T09:33:41.011Z [jfrt ] [INFO ] [7229d8b333b247ec] [ctoryContextConfigListener:326] [art-init            ] - 
+                _   _  __           _                      ____   _____ _____
+     /\        | | (_)/ _|         | |                    / __ \ / ____/ ____|
+    /  \   _ __| |_ _| |_ __ _  ___| |_ ___  _ __ _   _  | |  | | (___| (___
+   / /\ \ | '__| __| |  _/ _` |/ __| __/ _ \| '__| | | | | |  | |\___ \\___ \
+  / ____ \| |  | |_| | || (_| | (__| || (_) | |  | |_| | | |__| |____) |___) |
+ /_/    \_\_|   \__|_|_| \__,_|\___|\__\___/|_|   \__, |  \____/|_____/_____/
+ Version:  7.63.8                                  __/ |
+ Revision: 76308900                               |___/
+ Product Version:  7.63.8
+ Product Revision: 76308900
+ Artifactory Home: '/opt/jfrog/artifactory'
+ Node ID: '40549d3aaa65'
+###############################################################
+###   All services started successfully in 38.440 seconds   ###
+###############################################################  
+</pre>
+
+
+## Lab - Accessing the JFrog Artifactory Dashboard from Google Chrome Web browser
+```
+http://localhost:8081
+```
+You can with the below login credentials
+<pre>
+username - admin
+password - password
+</pre>
+![JFrog Artifactory Login Page](jfrog-img1.png)
+
+
+![JFrog Artifactory Login Page](jfrog-img2.png)
+![JFrog Artifactory Login Page](jfrog-img3.png)
+You can change the password as
+<pre>
+new password - Admin@123
+confirm password - Admin@123
+</pre>
+
+![JFrog Artifactory Login Page](jfrog-img4.png)
+You can skip
+![JFrog Artifactory Login Page](jfrog-img5.png)
+You can skip
+![JFrog Artifactory Login Page](jfrog-img6.png)
+You can skip
+
+![JFrog Artifactory Login Page](jfrog-img7.png)
+You can click on Finish button
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn deploy
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.tektutor:hello >-------------------------
+[INFO] Building hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hello ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/hello/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ hello ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ hello ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/hello/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ hello ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ hello ---
+[INFO] Surefire report directory: /home/jegan/devops-aug-2023/Day1/hello/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.HelloTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ hello ---
+[INFO] Building jar: /home/jegan/devops-aug-2023/Day1/hello/target/hello-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ hello ---
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/hello/target/hello-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/hello/1.0.0/hello-1.0.0.jar
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/hello/pom.xml to /home/jegan/.m2/repository/org/tektutor/hello/1.0.0/hello-1.0.0.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ hello ---
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.jar
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.jar (2.2 kB at 6.1 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.pom
+Uploaded to jfrog: http://localhost:8082/artifactory/tek    <server>
+      <id>jfrog</id>
+      <username>admin</username>
+      <password>Admin@123</password>
+    </server>
+tutor/org/tektutor/hello/1.0.0/hello-1.0.0.pom (698 B at 9.6 kB/s)
+Downloading from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml (297 B at 6.9 kB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.707 s
+[INFO] Finished at: 2023-07-31T15:31:28+05:30    <server>
+      <id>jfrog</id>
+      <username>admin</username>
+      <password>Admin@123</password>
+    </server>
+
+[INFO] ------------------------------------------------------------------------
+
+
+
+## Lab - Deploying your application binaries onto JFrog Artifactory Server
+
+Configuring your maven settings.xml with the JFrog Artifactory Login credentials
+![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/00b3485c-6156-4f82-980b-025fe7d9d1d8)
+
+
+```
+cd ~/devops-aug-2023/Day1/hello
+mvn deploy
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>mvn deploy</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.tektutor:hello >-------------------------
+[INFO] Building hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hello ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/hello/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ hello ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ hello ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/hello/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ hello ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ hello ---
+[INFO] Surefire report directory: /home/jegan/devops-aug-2023/Day1/hello/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.HelloTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ hello ---
+[INFO] Building jar: /home/jegan/devops-aug-2023/Day1/hello/target/hello-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ hello ---
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/hello/target/hello-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/hello/1.0.0/hello-1.0.0.jar
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/hello/pom.xml to /home/jegan/.m2/repository/org/tektutor/hello/1.0.0/hello-1.0.0.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ hello ---
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.jar
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.jar (2.2 kB at 6.1 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.pom
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.pom (698 B at 9.6 kB/s)
+Downloading from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml (297 B at 6.9 kB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.707 s
+[INFO] Finished at: 2023-07-31T15:31:28+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
+
+You may check the deployed binaries at the below URL
+<pre>
+http://localhost:8082/ui/native/tektutor/org/tektutor/hello/1.0.0/ 
+</pre>
+![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/6bfbc282-41cf-4fce-9020-73fc2197bee1)
