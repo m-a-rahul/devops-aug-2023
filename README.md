@@ -72,7 +72,7 @@ git pull
 ## ⛹️‍♂️ Lab - Compile your first maven project
 ```
 cd ~
-cd devops-aug-2023
+cd devops-aug-2023/Day1/hello
 mvn compile
 ```
 
@@ -105,7 +105,7 @@ jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>mvn compile</b>
 ## Lab - Cleaning your project binary output folder(target -folder)
 ```
 cd ~
-cd devops-aug-2023
+cd devops-aug-2023/Day1/hello
 mvn clean
 ```
 
