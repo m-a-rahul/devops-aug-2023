@@ -12,4 +12,4 @@ Kindly start your pre-test at the below link
 ```
 https://app.mymapit.in/code4/tiny/i6NpLu
 ```
-Once you are done with the pre-test, please leave a message viw WebEx chat.  In case your chat doesn't work, you can confirm me orally and I'll make a note that you have completed the test. Once everyone completes the test, we can start the training.
+Once you are done with the pre-test, please leave a message via WebEx chat.  In case your chat doesn't work, you can confirm me orally and I'll make a note that you have completed the test. Once everyone completes the test, we can start the training.
