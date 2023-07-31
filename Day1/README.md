@@ -228,7 +228,7 @@ It is a part of the lifecycle for the POM packaging 'jar'. This lifecycle includ
 [INFO] Finished at: 2023-07-31T13:50:23+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
-
+]
 ## Lab - Listing the clean lifecycle phases
 ```
 cd ~
@@ -244,7 +244,7 @@ egan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn help:describe -Dcmd=clean
 [INFO] -------------------------< org.tektutor:hello >-------------------------
 [INFO] Building hello 1.0.0
 [INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
+[INFO] ]
 [INFO] --- maven-help-plugin:3.4.0:describe (default-cli) @ hello ---
 [INFO] 'clean' is a phase within the 'clean' lifecycle, which has the following phases: 
 * pre-clean: Not defined
@@ -261,13 +261,16 @@ egan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn help:describe -Dcmd=clean
 
 ## Lab - Listing the site lifecycle phases
 ```
+cd ~
+cd devops-aug-2023/Day1/hello
+mvn site
 ```
 
 Expected output
 <pre>
 jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn help:describe -Dcmd=site
 [INFO] Scanning for projects...
-[INFO] 
+[INFO] ]
 [INFO] -------------------------< org.tektutor:hello >-------------------------
 [INFO] Building hello 1.0.0
 [INFO] --------------------------------[ jar ]---------------------------------
@@ -285,4 +288,59 @@ jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn help:describe -Dcmd=site
 [INFO] Total time:  0.438 s
 [INFO] Finished at: 2023-07-31T13:52:37+05:30
 [INFO] ------------------------------------------------------------------------
+</pre>
+
+## Lab - Executing JUnit Test cases as part of maven build
+```
+cd ~
+cd devops-aug-2023/Day1/hello
+mvn test
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.tektutor:hello >-------------------------
+[INFO] Building hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hello ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/hello/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ hello ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-aug-2023/Day1/hello/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ hello ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/hello/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ hello ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-aug-2023/Day1/hello/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ hello ---
+[INFO] Surefire report directory: /home/jegan/devops-aug-2023/Day1/hello/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.HelloTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.350 s
+[INFO] Finished at: 2023-07-31T14:12:14+05:30
+[INFO] ------------------------------------------------------------------------ 
 </pre>
