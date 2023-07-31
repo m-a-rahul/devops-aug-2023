@@ -1118,7 +1118,6 @@ Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello
 
 You may check the deployed binaries at the below URL
 <pre>
-
-  
+http://localhost:8082/ui/native/tektutor/org/tektutor/hello/1.0.0/ 
 </pre>
 ![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/6bfbc282-41cf-4fce-9020-73fc2197bee1)
