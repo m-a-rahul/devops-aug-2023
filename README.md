@@ -53,6 +53,12 @@ OS name: "linux", version: "5.19.0-50-generic", arch: "amd64", family: "unix"
 
 </pre>
 
+##  ⛹️‍♂️ Lab - Installing tree utility in CentOS
+```
+sudo yum install -y epel-release
+sudo yum install -y tree
+```
+
 
 ## ⛹️‍♂️ Lab - Cloning the TekTutor Training Repository (Only the first time)
 ```
