@@ -136,7 +136,7 @@ jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>ls</b>
 pom.xml  src  
 </pre>
 
-## Lab - Effective pom
+## ⛹️‍♂️ Lab - Effective pom
 ```
 cd ~
 cd devops-aug-2023/Day1/hello
