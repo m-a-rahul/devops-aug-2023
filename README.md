@@ -100,3 +100,32 @@ jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>mvn compile</b>
 [INFO] Finished at: 2023-07-31T12:53:22+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
+
+
+## Lab - Cleaning your project binary output folder(target -folder)
+```
+cd ~
+cd devops-aug-2023
+mvn clean
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>mvn clean</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.tektutor:hello >-------------------------
+[INFO] Building hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ hello ---
+[INFO] Deleting /home/jegan/devops-aug-2023/Day1/hello/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.208 s
+[INFO] Finished at: 2023-07-31T12:55:04+05:30
+[INFO] ------------------------------------------------------------------------
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>ls</b>
+pom.xml  src  
+</pre>
