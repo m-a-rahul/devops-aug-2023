@@ -902,3 +902,10 @@ http://localhost:8081
 ```
 
 ![JFrog Artifactory Login Page](jfrog-img1.png)
+![JFrog Artifactory Login Page](jfrog-img2.png)
+![JFrog Artifactory Login Page](jfrog-img3.png)
+![JFrog Artifactory Login Page](jfrog-img4.png)
+![JFrog Artifactory Login Page](jfrog-img5.png)
+![JFrog Artifactory Login Page](jfrog-img6.png)
+![JFrog Artifactory Login Page](jfrog-img7.png)
+
