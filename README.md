@@ -191,3 +191,114 @@ Effective user-specific configuration settings:
 [INFO] Finished at: 2023-07-31T13:47:26+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
+
+## Lab - Listing the default lifecycle phases
+```
+cd ~
+cd devops-aug-2023/Day1/hello
+mvn help:describe -Dcmd=compile
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn help:describe -Dcmd=compile
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.tektutor:hello >-------------------------
+[INFO] Building hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-help-plugin:3.4.0:describe (default-cli) @ hello ---
+[INFO] 'compile' is a phase corresponding to this plugin:
+org.apache.maven.plugins:maven-compiler-plugin:3.1:compile
+
+It is a part of the lifecycle for the POM packaging 'jar'. This lifecycle includes the following phases:
+* validate: Not defined
+* initialize: Not defined
+* generate-sources: Not defined
+* process-sources: Not defined
+* generate-resources: Not defined
+* process-resources: org.apache.maven.plugins:maven-resources-plugin:2.6:resources
+* compile: org.apache.maven.plugins:maven-compiler-plugin:3.1:compile
+* process-classes: Not defined
+* generate-test-sources: Not defined
+* process-test-sources: Not defined
+* generate-test-resources: Not defined
+* process-test-resources: org.apache.maven.plugins:maven-resources-plugin:2.6:testResources
+* test-compile: org.apache.maven.plugins:maven-compiler-plugin:3.1:testCompile
+* process-test-classes: Not defined
+* test: org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test
+* prepare-package: Not defined
+* package: org.apache.maven.plugins:maven-jar-plugin:2.4:jar
+* pre-integration-test: Not defined
+* integration-test: Not defined
+* post-integration-test: Not defined
+* verify: Not defined
+* install: org.apache.maven.plugins:maven-install-plugin:2.4:install
+* deploy: org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.466 s
+[INFO] Finished at: 2023-07-31T13:50:23+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
+
+## Lab - Listing the clean lifecycle phases
+```
+cd ~
+cd devops-aug-2023/Day1/hello
+mvn help:describe -Dcmd=clean
+```
+
+Expected output
+<pre>
+egan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn help:describe -Dcmd=clean
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.tektutor:hello >-------------------------
+[INFO] Building hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-help-plugin:3.4.0:describe (default-cli) @ hello ---
+[INFO] 'clean' is a phase within the 'clean' lifecycle, which has the following phases: 
+* pre-clean: Not defined
+* clean: org.apache.maven.plugins:maven-clean-plugin:2.5:clean
+* post-clean: Not defined
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.443 s
+[INFO] Finished at: 2023-07-31T13:52:13+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
+
+## Lab - Listing the site lifecycle phases
+```
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn help:describe -Dcmd=site
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.tektutor:hello >-------------------------
+[INFO] Building hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-help-plugin:3.4.0:describe (default-cli) @ hello ---
+[INFO] 'site' is a phase within the 'site' lifecycle, which has the following phases: 
+* pre-site: Not defined
+* site: org.apache.maven.plugins:maven-site-plugin:3.3:site
+* post-site: Not defined
+* site-deploy: org.apache.maven.plugins:maven-site-plugin:3.3:deploy
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.438 s
+[INFO] Finished at: 2023-07-31T13:52:37+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
