@@ -993,4 +993,132 @@ You can skip
 
 ![JFrog Artifactory Login Page](jfrog-img7.png)
 You can click on Finish button
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn deploy
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.tektutor:hello >-------------------------
+[INFO] Building hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hello ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/hello/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ hello ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ hello ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/hello/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ hello ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ hello ---
+[INFO] Surefire report directory: /home/jegan/devops-aug-2023/Day1/hello/target/surefire-reports
 
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.HelloTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ hello ---
+[INFO] Building jar: /home/jegan/devops-aug-2023/Day1/hello/target/hello-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ hello ---
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/hello/target/hello-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/hello/1.0.0/hello-1.0.0.jar
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/hello/pom.xml to /home/jegan/.m2/repository/org/tektutor/hello/1.0.0/hello-1.0.0.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ hello ---
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.jar
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.jar (2.2 kB at 6.1 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.pom
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.pom (698 B at 9.6 kB/s)
+Downloading from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml (297 B at 6.9 kB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.707 s
+[INFO] Finished at: 2023-07-31T15:31:28+05:30
+[INFO] ------------------------------------------------------------------------
+
+## Lab - Deploying your application binaries onto JFrog Artifactory Server
+```
+cd ~/devops-aug-2023/Day1/hello
+mvn deploy
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>mvn deploy</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.tektutor:hello >-------------------------
+[INFO] Building hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hello ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/hello/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ hello ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ hello ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/hello/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ hello ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ hello ---
+[INFO] Surefire report directory: /home/jegan/devops-aug-2023/Day1/hello/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.HelloTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ hello ---
+[INFO] Building jar: /home/jegan/devops-aug-2023/Day1/hello/target/hello-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ hello ---
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/hello/target/hello-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/hello/1.0.0/hello-1.0.0.jar
+[INFO] Installing /home/jegan/devops-aug-2023/Day1/hello/pom.xml to /home/jegan/.m2/repository/org/tektutor/hello/1.0.0/hello-1.0.0.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ hello ---
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.jar
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.jar (2.2 kB at 6.1 kB/s)
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.pom
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/1.0.0/hello-1.0.0.pom (698 B at 9.6 kB/s)
+Downloading from jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml
+Uploading to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml
+Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello/maven-metadata.xml (297 B at 6.9 kB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.707 s
+[INFO] Finished at: 2023-07-31T15:31:28+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
+
+You may check the deployed binaries at the below URL
+<pre>
+
+  
+</pre>
+![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/6bfbc282-41cf-4fce-9020-73fc2197bee1)
