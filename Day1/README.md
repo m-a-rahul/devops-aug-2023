@@ -857,7 +857,7 @@ compiler:testCompile
 </pre>
 
 
-## Lab - Creating JFrog Artifactory server using docker
+## ⛹️‍♂️ Lab - Creating JFrog Artifactory server using docker
 ```
 docker run --name artifactory  -d -p 8081-8082:8081-8082 releases-docker.jfrog.io/jfrog/artifactory-oss:latest
 ```
@@ -889,7 +889,7 @@ CONTAINER ID   IMAGE                                                   COMMAND  
 40549d3aaa65   releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   28 seconds ago   Up 26 seconds   0.0.0.0:8081-8082->8081-8082/tcp, :::8081-8082->8081-8082/tcp   artifactory
 </pre>
 
-## Running JFrog Artifactory servers via Docker container
+## ⛹️‍♂️ Lab - Running JFrog Artifactory servers via Docker container
 ```
 docker logs -f artifactory
 ```
@@ -967,7 +967,7 @@ router started. PID: 3624
 </pre>
 
 
-## Lab - Accessing the JFrog Artifactory Dashboard from Google Chrome Web browser
+## ⛹️‍♂️ Lab - Accessing the JFrog Artifactory Dashboard from Google Chrome Web browser
 ```
 http://localhost:8081
 ```
@@ -1066,7 +1066,7 @@ Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/hello
 [INFO] ------------------------------------------------------------------------
 </pre>
 
-## Lab - Deploying your application binaries onto JFrog Artifactory Server
+## ⛹️‍♂️ Lab - Deploying your application binaries onto JFrog Artifactory Server
 
 Configuring your maven settings.xml with the JFrog Artifactory Login credentials
 ![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/00b3485c-6156-4f82-980b-025fe7d9d1d8)
@@ -1143,7 +1143,7 @@ http://localhost:8082/ui/native/tektutor/org/tektutor/hello/1.0.0/
 </pre>
 ![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/6bfbc282-41cf-4fce-9020-73fc2197bee1)
 
-## Lab - Compiling C++ project using Maven build tool
+## ⛹️‍♂️ Lab - Compiling C++ project using Maven build tool
 In this exercise, you will learn 
 - how to disable maven plugins from getting during certain phases
 - how to enable custom third-party plugsin during certain phases
