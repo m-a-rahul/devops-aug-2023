@@ -54,7 +54,7 @@ OS name: "linux", version: "5.19.0-50-generic", arch: "amd64", family: "unix"
 </pre>
 
 
-## Lab - Cloning the TekTutor Training Repository (Only the first time)
+## ⛹️‍♂️ Lab - Cloning the TekTutor Training Repository (Only the first time)
 ```
 cd ~
 git clone https://github.com/tektutor/devops-aug-2023.git
@@ -62,14 +62,14 @@ cd devops-aug-2023
 tree
 ```
 
-## Lab - Pulling only delta changes after doing clone once
+## ⛹️‍♂️ Lab - Pulling only delta changes after doing clone once
 ```
 cd ~
 cd devops-aug-2023
 git pull
 ```
 
-## Lab - Compile your first maven project
+## ⛹️‍♂️ Lab - Compile your first maven project
 ```
 cd ~
 cd devops-aug-2023
