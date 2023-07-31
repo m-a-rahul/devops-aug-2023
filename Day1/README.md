@@ -820,6 +820,7 @@ compiler:testCompile
 
 ## Running JFrog Artifactory servers via Docker container
 ```
+docker logs -f artifactory
 ```
 
 Expected output
