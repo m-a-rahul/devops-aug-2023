@@ -1144,6 +1144,12 @@ http://localhost:8082/ui/native/tektutor/org/tektutor/hello/1.0.0/
 ![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/6bfbc282-41cf-4fce-9020-73fc2197bee1)
 
 ## ⛹️‍♂️ Lab - Compiling C++ project using Maven build tool
+
+Install dev-tools to compile c++ projects in CentOS 7.x
+```
+sudo yum groupinstall "Development tools"
+```
+
 In this exercise, you will learn 
 - how to disable maven plugins from getting during certain phases
 - how to enable custom third-party plugsin during certain phases
