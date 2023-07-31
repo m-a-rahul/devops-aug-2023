@@ -52,3 +52,51 @@ Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "5.19.0-50-generic", arch: "amd64", family: "unix"
 
 </pre>
+
+
+## Lab - Cloning the TekTutor Training Repository (Only the first time)
+```
+cd ~
+git clone https://github.com/tektutor/devops-aug-2023.git
+cd devops-aug-2023
+tree
+```
+
+## Lab - Pulling only delta changes after doing clone once
+```
+cd ~
+cd devops-aug-2023
+git pull
+```
+
+## Lab - Compile your first maven project
+```
+cd ~
+cd devops-aug-2023
+mvn compile
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day1/hello$ <b>mvn compile</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< org.tektutor:hello >-------------------------
+[INFO] Building hello 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hello ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-aug-2023/Day1/hello/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ hello ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-aug-2023/Day1/hello/target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.787 s
+[INFO] Finished at: 2023-07-31T12:53:22+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
