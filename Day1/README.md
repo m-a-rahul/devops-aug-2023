@@ -911,7 +911,12 @@ password - password
 ![JFrog Artifactory Login Page](jfrog-img2.png)
 ![JFrog Artifactory Login Page](jfrog-img3.png)
 ![JFrog Artifactory Login Page](jfrog-img4.png)
+You can skip
 ![JFrog Artifactory Login Page](jfrog-img5.png)
+You can skip
 ![JFrog Artifactory Login Page](jfrog-img6.png)
+You can skip
+
 ![JFrog Artifactory Login Page](jfrog-img7.png)
+You can click on Finish button
 
