@@ -3,7 +3,8 @@
 - Kindly check if you are able to access the RPS Cloud machine
 - You can start your DevOps pre-test from the RPS cloud machine
 - While registering for pre-test, you may use your personal-email id and avoid using BOFA
-- At any point, in case you have any lab access issue, please feel free to reach out to RPS team connected via WebEx chat (Hari - +91 984-618-6667)
+- At any point, in case you have any lab access issue, please feel free to reach out to RPS team connected via WebEx chat 
+- You may also call Hari from RPS for any lab access issues @ +91 984-618-6667
 </pre>
 
 # Pre-test URL
