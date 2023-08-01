@@ -113,3 +113,25 @@ Deleted: sha256:53f461ca2fa072b83247906863d62d1abee86acba06b84504c19c58e9ff9d91a
 Deleted: sha256:a1f1bff6ca971672d804bc9aeb5e762c21fd9e4390478ef6d12b96ea450c3e58
 Deleted: sha256:bb01bd7e32b58b6694c8c3622c230171f1cec24001a82068a8d30d338f420d6c
 </pre>
+
+
+## Lab - Deleting containers
+```
+docker rm -f python python2 python3
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023$ docker ps
+CONTAINER ID   IMAGE           COMMAND   CREATED          STATUS          PORTS     NAMES
+52c4b16eb690   python:latest   "bash"    14 minutes ago   Up 14 minutes             python3
+37276c57eca6   python:latest   "bash"    14 minutes ago   Up 14 minutes             python2
+6e6ab2d1cfb5   python:latest   "bash"    25 minutes ago   Up 24 minutes             python
+jegan@tektutor.org:~/devops-aug-2023$ docker rm -f python python2 python3
+python
+python2
+python3
+
+jegan@tektutor.org:~/devops-aug-2023$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+</pre>
