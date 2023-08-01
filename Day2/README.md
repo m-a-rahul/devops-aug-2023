@@ -60,3 +60,38 @@ maven                                            3.6.3-jdk-11   e23b595c92ad   2
 docker.bintray.io/jfrog/artifactory-oss          6.23.13        6106bdbbf79d   2 years ago     743MB
 k8s.gcr.io/pause                                 3.1            da86e6ba6ca1   5 years ago     742kB
 </pre>
+
+## Downloading docker image from Docker Hub to Local Registry
+```
+docker pull python:latest
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023$ docker pull python:latest
+latest: Pulling from library/python
+785ef8b9b236: Pull complete 
+5a6dad8f55ae: Pull complete 
+bd36c7bfe5f4: Pull complete 
+4d207285f6d2: Pull complete 
+9402da1694b8: Pull complete 
+9bdbf45d01af: Pull complete 
+dd8b7ef87a9d: Pull complete 
+4de52e7027c5: Pull complete 
+Digest: sha256:9a1b705aecedc76e8bf87dfca091d7093df3f2dd4765af6c250134ce4298a584
+Status: Downloaded newer image for python:latest
+docker.io/library/python:latest
+</pre>
+
+You may now try listing the docker images to see if python image shows up
+```
+docker images
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023$ docker images
+REPOSITORY                                       TAG            IMAGE ID       CREATED         SIZE
+releases-docker.jfrog.io/jfrog/artifactory-oss   latest         b440125d9795   4 days ago      1.84GB
+<b>python                                           latest         608c79ebc6d5   6 weeks ago     1.01GB</b>
+</pre>
