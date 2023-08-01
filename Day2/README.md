@@ -171,7 +171,7 @@ Deleted: sha256:bb01bd7e32b58b6694c8c3622c230171f1cec24001a82068a8d30d338f420d6c
 
 ## Lab - Creating a container and running it in background
 ```
-jegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root
+docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root
 
 docker exec -it mysql bash
 mysql -u root -p
@@ -257,61 +257,7 @@ mysql> SELECT * FROM training;
 +----+-----------+----------+
 | id | name      | duration |
 +----+-----------+----------+
-|  1 | DevOps    | 5 Days   |jegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
-f1bb0361a59266aeccd57303070ecb182565e77b512db932d2d5e7972c2f63cc
-jegan@tektutor.org:~/devops-aug-2023$ docker exec -it mysql bash
-bash-4.4# mysql -u root -p
-Enter password: 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 8
-Server version: 8.0.33 MySQL Community Server - GPL
-
-Copyright (c) 2000, 2023, Oracle and/or its affiliates.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.python
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql> SHOW DATABASES;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-| tektutor           |
-+--------------------+
-5 rows in set (0.00 sec)
-
-mysql> USE tektutor;
-Reading table information for completion of table and column names
-You can turn off this feature to get a quicker startup with -A
-
-Database changed
-mysql> SHOW TABLES;'
-+--------------------+
-| Tables_in_tektutor |
-+--------------------+
-| training           |
-+--------------------+
-1 row in set (0.00 sec)
-
-mysql> SELECT * FROM training;
-+----+-----------+----------+
-| id | name      | duration |
-+----+-----------+----------+
 |  1 | DevOps    | 5 Days   |
-|  2 | OpenShift | 5 Days   |
-+----+-----------+----------+
-2 rows in set (0.00 sec)
-
-mysql> exit
-Bye
-bash-4.4# exit
-exit
 
 |  2 | OpenShift | 5 Days   |
 +----+-----------+----------+
