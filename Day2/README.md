@@ -154,152 +154,9 @@ SELECT * FROM training;
 
 The expectation is, even though we deleted the old mysql container, the data will be preserved as we are using external volume/storage.
 
-## Lab - Deleting containersjegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
-f1bb0361a59266aeccd57303070ecb182565e77b512db932d2d5e7972c2f63cc
-jegan@tektutor.org:~/devops-aug-2023$ docker exec -it mysql bash
-bash-4.4# mysql -u root -p
-Enter password: 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 8
-Server version: 8.0.33 MySQL Community Server - GPL
+## Lab - Deleting containers
 
-Copyright (c) 2000, 2023, Oracle and/or its affiliates.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql> SHOW DATABASES;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-| tektutor           |
-+--------------------+
-5 rows in set (0.00 sec)
-
-mysql> USE tektutor;
-Reading table information for completion of table and column names
-You can turn off this feature to get a quicker startup with -A
-
-Database changed
-mysql> SHOW TABLES;'
-+--------------------+
-| Tables_in_tektutor |
-+--------------------+
-| training           |
-+--------------------+
-1 row in set (0.00 sec)
-
-
-mysql> SELECT * FROM training;
-+----+-----------+----------+
-| id | name      | duration |
-+----+-----------+----------+
-|  1 | DevOps    | 5 Days   |
-|  2 | OpenShift | 5 Days   |
-+----+-----------+----------+
-2 rows in set (0.00 sec)
-
-mysql> exit
-Bye
-bash-4.4# exit
-exit
-
-```jegan@tektutor.org:~/devops-aug-2023$ docker ps
-CONTAINER ID   IMAGE           COMMAND   CREATED         STATUS         PORTS     NAMES
-17c7493b364a   python:latest   "bash"    7 minutes ago   Up 7 minutes             python
-jegan@tektutor.org:~/devops-aug-2023$ docker stop python
-python
-jegan@tektutor.org:~/devops-aug-2023$ docker ps
-CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
-jegan@tektutor.org:~/devops-aug-2023$ docker ps -a
-CONTAINER ID   IMAGE                                                   COMMAND                  CREATED         STATUS                       PORTS     NAMES
-17c7493b364a   python:latest                                           "bash"                   7 minutes ago   Exited (137) 7 seconds ago             python
-40549d3aaa65   releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   24 hours ago    Exited (137) 21 hours ago              artifactory
-2cbd6b96b0c5   xebialabs/xl-release:22.2                               "/opt/xebialabs/tini…"   7 weeks ago     Exited (130) 7 weeks ago               xlr
-2d1d256a3e00   mysql:latest                                            "docker-entrypoint.s…"   7 weeks ago     Exited (0) 7 weeks ago                 mysql
-jegan@tektutor.org:~/devops-aug-2023$ docker start python
-python
-jegan@tektutor.org:~/devops-aug-2023$ docker ps
-CONTAINER ID   IMAGE           COMMAND   CREATED         STATUS        PORTS     NAMES
-17c7493b364a   python:latest   "bash"    7 minutes ago   Up 1 second             python
-jegan@tektutor.org:~/devops-aug-2023$ docker restart python
-pythonjegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
-f1bb0361a59266aeccd57303070ecb182565e77b512db932d2d5e7972c2f63cc
-jegan@tektutor.org:~/devops-aug-2023$ docker exec -it mysql bash
-bash-4.4# mysql -u root -p
-Enter password: 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 8
-Server version: 8.0.33 MySQL Community Server - GPL
-
-Copyright (c) 2000, 2023, Oracle and/or its affiliates.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql> SHOW DATABASES;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-| tektutor           |
-+--------------------+
-5 rows in set (0.00 sec)
-
-mysql> USE tektutor;
-Reading table information for completion of table and column names
-You can turn off this feature to get a quicker startup with -A
-
-Database changed
-mysql> SHOW TABLES;'
-+--------------------+
-| Tables_in_tektutor |
-+--------------------+
-| training           |
-+--------------------+
-1 row in set (0.00 sec)
-
-    '> ;
-    '> 
-    '> 
-    '> .
-    '> ;
-    '> 
-    '> 
-    '> 
-    '> 
-    '> 
-    '> SELECT * FROM training;
-    '> ;
-    '> ^C
-mysql> SELECT * FROM training;
-+----+-----------+----------+
-| id | name      | duration |
-+----+-----------+----------+
-|  1 | DevOps    | 5 Days   |
-|  2 | OpenShift | 5 Days   |
-+----+-----------+----------+
-2 rows in set (0.00 sec)
-
-mysql> exit
-Bye
-bash-4.4# exit
-exit
-
-
+```
 docker rm -f python python2 python3
 ```
 
@@ -341,6 +198,13 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 ## Lab - Starting/stopping/restarting container
 ```
+docker ps
+docker stop python
+docker ps
+docker ps -a
+docker start python
+docker ps
+docker restart python
 ```
 
 Expected output
@@ -378,16 +242,9 @@ Expected output
 <pre>
 jegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
 f1bb0361a59266aeccd57303070ecb182565e77b512db932d2d5e7972c2f63cc
+  
 jegan@tektutor.org:~/devops-aug-2023$ docker exec -it mysql bash
-bash-4.4# mysql -u root -p
-Enter password: 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 8
-Server version: 8.0.33 MySQL Community Server - GPL
-
-Copyright (c) 2000,jegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
-f1bb0361a59266aeccd57303070ecb182565e77b512db932d2d5e7972c2f63cc
-jegan@tektutor.org:~/devops-aug-2023$ docker exec -it mysql bash
+  
 bash-4.4# mysql -u root -p
 Enter password: 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -426,20 +283,6 @@ mysql> SHOW TABLES;'
 | training           |
 +--------------------+
 1 row in set (0.00 sec)
-
-    '> ;
-    '> 
-    '> 
-    '> .
-    '> ;
-    '> 
-    '> 
-    '> 
-    '> 
-    '> 
-    '> SELECT * FROM training;
-    '> ;
-    '> ^C
 mysql> SELECT * FROM training;
 +----+-----------+----------+
 | id | name      | duration |
@@ -509,6 +352,13 @@ docker run -d --name server2 --hostname server2 nginx:latest
 docker run -d --name server3 --hostname server3 nginx:latest
 ```
 
+Finding the IP address of server1, server2 and server3
+```
+docker inspect server1 | grep IPA
+docker inspect server2 | grep IPA
+docker inspect server3 | grep IPA
+```
+
 Let's create a container for Load Balancing with Port forwarding
 ```
 docker run -d --name lb --hostname lb -p 8001:80 nginx:latest
@@ -521,6 +371,7 @@ docker ps
 
 In order to configure the lb container to work like a Load Balancer, we need copy the below nginx.conf file onto the lb container
 
+nginx.conf
 '''
 user  nginx;
 worker_processes  auto;
