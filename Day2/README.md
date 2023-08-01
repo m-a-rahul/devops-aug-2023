@@ -95,3 +95,21 @@ REPOSITORY                                       TAG            IMAGE ID       C
 releases-docker.jfrog.io/jfrog/artifactory-oss   latest         b440125d9795   4 days ago      1.84GB
 <b>python                                           latest         608c79ebc6d5   6 weeks ago     1.01GB</b>
 </pre>
+
+## Deleting docker image from local docker registry
+```
+docker rmi registry:2
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023$ docker rmi registry:2
+Untagged: registry:2
+Untagged: registry@sha256:20d084723c951e377e1a2a5b3df316173a845e300d57ccdd8ae3ab2da3439746
+Deleted: sha256:65f3b3441f044d142ca365389fe0532900b4f4c7ffc47cb65f7bc7bd45857f06
+Deleted: sha256:064051c3a2a77373c0e25b6be4dada18268a3431db567ef299bc6db2dfec1ff1
+Deleted: sha256:b800adaafd3ce33dfcb13730ef43bb7a7483ed77b1c1d2c5354c6610028370fa
+Deleted: sha256:53f461ca2fa072b83247906863d62d1abee86acba06b84504c19c58e9ff9d91a
+Deleted: sha256:a1f1bff6ca971672d804bc9aeb5e762c21fd9e4390478ef6d12b96ea450c3e58
+Deleted: sha256:bb01bd7e32b58b6694c8c3622c230171f1cec24001a82068a8d30d338f420d6c
+</pre>
