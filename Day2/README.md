@@ -82,7 +82,7 @@ mysql> SELECT * FROM training;
 mysql> exit
 Bye
 bash-4.4# exit
-exit
+exitpython
 
 docker images
 ```
@@ -127,7 +127,7 @@ jegan@tektutor.org:~/devops-aug-2023$ docker pull python:latest
 latest: Pulling from library/python
 785ef8b9b236: Pull complete 
 5a6dad8f55ae: Pull complete 
-bd36c7bfe5f4: Pull complete 
+bd36c7bfe5f4: Pull complete python
 4d207285f6d2: Pull complete 
 9402da1694b8: Pull complete 
 9bdbf45d01af: Pull complete 
@@ -141,7 +141,7 @@ docker.io/library/python:latest
 You may now try listing the docker images to see if python image shows up
 ```
 docker images
-```
+```python
 
 Expected output
 <pre>
@@ -209,7 +209,8 @@ SELECT * FROM training;
 
 Expected output
 <pre>
-docker run -dit --name python --hostname python python:latest bashjegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latestf1bb0361a59266aeccd57303070ecb182565e77b512db932d2d5e7972c2f63cc
+jegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
+f1bb0361a59266aeccd57303070ecb182565e77b512db932d2d5e7972c2f63cc
 
 jegan@tektutor.org:~/devops-aug-2023$ docker exec -it mysql bash
 
@@ -269,7 +270,7 @@ Copyright (c) 2000, 2023, Oracle and/or its affiliates.
 
 Oracle is a registered trademark of Oracle Corporation and/or its
 affiliates. Other names may be trademarks of their respective
-owners.
+owners.python
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
