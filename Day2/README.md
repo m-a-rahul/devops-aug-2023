@@ -372,7 +372,7 @@ docker ps
 In order to configure the lb container to work like a Load Balancer, we need copy the below nginx.conf file onto the lb container
 
 nginx.conf
-'''
+<pre>
 user  nginx;
 worker_processes  auto;
 
@@ -397,7 +397,7 @@ http {
         }
     }
 }  
-'''
+</pre>
 
 We need to copy the above file into lb container
 ```
