@@ -151,7 +151,27 @@ exit
 </pre>  
 
 ## Lab - Deleting containers
-```
+```jegan@tektutor.org:~/devops-aug-2023$ docker ps
+CONTAINER ID   IMAGE           COMMAND   CREATED         STATUS         PORTS     NAMES
+17c7493b364a   python:latest   "bash"    7 minutes ago   Up 7 minutes             python
+jegan@tektutor.org:~/devops-aug-2023$ docker stop python
+python
+jegan@tektutor.org:~/devops-aug-2023$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+jegan@tektutor.org:~/devops-aug-2023$ docker ps -a
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED         STATUS                       PORTS     NAMES
+17c7493b364a   python:latest                                           "bash"                   7 minutes ago   Exited (137) 7 seconds ago             python
+40549d3aaa65   releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   24 hours ago    Exited (137) 21 hours ago              artifactory
+2cbd6b96b0c5   xebialabs/xl-release:22.2                               "/opt/xebialabs/tini…"   7 weeks ago     Exited (130) 7 weeks ago               xlr
+2d1d256a3e00   mysql:latest                                            "docker-entrypoint.s…"   7 weeks ago     Exited (0) 7 weeks ago                 mysql
+jegan@tektutor.org:~/devops-aug-2023$ docker start python
+python
+jegan@tektutor.org:~/devops-aug-2023$ docker ps
+CONTAINER ID   IMAGE           COMMAND   CREATED         STATUS        PORTS     NAMES
+17c7493b364a   python:latest   "bash"    7 minutes ago   Up 1 second             python
+jegan@tektutor.org:~/devops-aug-2023$ docker restart python
+python
+
 docker rm -f python python2 python3
 ```
 
@@ -160,7 +180,27 @@ Expected output
 jegan@tektutor.org:~/devops-aug-2023$ docker ps
 CONTAINER ID   IMAGE           COMMAND   CREATED          STATUS          PORTS     NAMES
 52c4b16eb690   python:latest   "bash"    14 minutes ago   Up 14 minutes             python3
-37276c57eca6   python:latest   "bash"    14 minutes ago   Up 14 minutes             python2
+37276c57eca6   python:latest   "bash"    14 minutes ajegan@tektutor.org:~/devops-aug-2023$ docker ps
+CONTAINER ID   IMAGE           COMMAND   CREATED         STATUS         PORTS     NAMES
+17c7493b364a   python:latest   "bash"    7 minutes ago   Up 7 minutes             python
+jegan@tektutor.org:~/devops-aug-2023$ docker stop python
+python
+jegan@tektutor.org:~/devops-aug-2023$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+jegan@tektutor.org:~/devops-aug-2023$ docker ps -a
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED         STATUS                       PORTS     NAMES
+17c7493b364a   python:latest                                           "bash"                   7 minutes ago   Exited (137) 7 seconds ago             python
+40549d3aaa65   releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   24 hours ago    Exited (137) 21 hours ago              artifactory
+2cbd6b96b0c5   xebialabs/xl-release:22.2                               "/opt/xebialabs/tini…"   7 weeks ago     Exited (130) 7 weeks ago               xlr
+2d1d256a3e00   mysql:latest                                            "docker-entrypoint.s…"   7 weeks ago     Exited (0) 7 weeks ago                 mysql
+jegan@tektutor.org:~/devops-aug-2023$ docker start python
+python
+jegan@tektutor.org:~/devops-aug-2023$ docker ps
+CONTAINER ID   IMAGE           COMMAND   CREATED         STATUS        PORTS     NAMES
+17c7493b364a   python:latest   "bash"    7 minutes ago   Up 1 second             python
+jegan@tektutor.org:~/devops-aug-2023$ docker restart python
+python
+go   Up 14 minutes             python2
 6e6ab2d1cfb5   python:latest   "bash"    25 minutes ago   Up 24 minutes             python
 jegan@tektutor.org:~/devops-aug-2023$ docker rm -f python python2 python3
 python
@@ -171,4 +211,30 @@ jegan@tektutor.org:~/devops-aug-2023$ docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 </pre>
 
+## Lab - Starting/stopping/restarting container
+```
+```
 
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023$ docker ps
+CONTAINER ID   IMAGE           COMMAND   CREATED         STATUS         PORTS     NAMES
+17c7493b364a   python:latest   "bash"    7 minutes ago   Up 7 minutes             python
+jegan@tektutor.org:~/devops-aug-2023$ docker stop python
+python
+jegan@tektutor.org:~/devops-aug-2023$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+jegan@tektutor.org:~/devops-aug-2023$ docker ps -a
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED         STATUS                       PORTS     NAMES
+17c7493b364a   python:latest                                           "bash"                   7 minutes ago   Exited (137) 7 seconds ago             python
+40549d3aaa65   releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   24 hours ago    Exited (137) 21 hours ago              artifactory
+2cbd6b96b0c5   xebialabs/xl-release:22.2                               "/opt/xebialabs/tini…"   7 weeks ago     Exited (130) 7 weeks ago               xlr
+2d1d256a3e00   mysql:latest                                            "docker-entrypoint.s…"   7 weeks ago     Exited (0) 7 weeks ago                 mysql
+jegan@tektutor.org:~/devops-aug-2023$ docker start python
+python
+jegan@tektutor.org:~/devops-aug-2023$ docker ps
+CONTAINER ID   IMAGE           COMMAND   CREATED         STATUS        PORTS     NAMES
+17c7493b364a   python:latest   "bash"    7 minutes ago   Up 1 second             python
+jegan@tektutor.org:~/devops-aug-2023$ docker restart python
+python  
+</pre>
