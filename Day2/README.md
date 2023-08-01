@@ -129,10 +129,6 @@ http {
         }
     }
 }
-
-exitpython
-
-docker images
 ```
 
 Expected output
