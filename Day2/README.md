@@ -184,9 +184,48 @@ Deleted: sha256:bb01bd7e32b58b6694c8c3622c230171f1cec24001a82068a8d30d338f420d6c
 
 ## Lab - Creating a container and running it in background
 ```
-docker run -dit --name python --hostname python python:latest bashjegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
-f1bb0361a59266aeccd57303070ecb182565e77b512db932d2d5e7972c2f63cc
+docker run -dit --name python --hostname python python:latest bashjegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root
+
+docker exec -it mysql bash
+mysql -u root -p
+
+CREATE DATABASE tektutor;
+USE tektutor;
+CREATE TABLE training (id INT NOT NULL, name VARCHAR(100), duration VARCHAR(100), PRIMARY KEY(id) );
+INSERT INTO training VALUES ( 1, "DevOps", "5 Days" );
+INSERT INTO training VALUES ( 2, "Azure DevOps", "5 Days");
+SELECT * FROM training;
+
+exit
+exit
+```
+
+Let's us delete the mysql container
+```
+docker rm -f mysql
+```
+
+Let's create a new mysql container 
+```
+docker run -dit --name python --hostname python python:latest bashjegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root
+```
+
+Let's get inside the mysql container
+```
+docker exec -it mysql bash
+mysql -u root -p
+SHOW DATABASE;
+USE tektutor;
+SHOW TABLES;
+SELECT * FROM training;
+```
+
+Expected output
+<pre>
+docker run -dit --name python --hostname python python:latest bashjegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latestf1bb0361a59266aeccd57303070ecb182565e77b512db932d2d5e7972c2f63cc
+
 jegan@tektutor.org:~/devops-aug-2023$ docker exec -it mysql bash
+
 bash-4.4# mysql -u root -p
 Enter password: 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -226,19 +265,6 @@ mysql> SHOW TABLES;'
 +--------------------+
 1 row in set (0.00 sec)
 
-    '> ;
-    '> 
-    '> 
-    '> .
-    '> ;
-    '> 
-    '> 
-    '> 
-    '> 
-    '> 
-    '> SELECT * FROM training;
-    '> ;
-    '> ^C
 mysql> SELECT * FROM training;
 +----+-----------+----------+
 | id | name      | duration |
@@ -285,19 +311,6 @@ mysql> SHOW TABLES;'
 +--------------------+
 1 row in set (0.00 sec)
 
-    '> ;
-    '> 
-    '> 
-    '> .
-    '> ;
-    '> 
-    '> 
-    '> 
-    '> 
-    '> 
-    '> SELECT * FROM training;
-    '> ;
-    '> ^C
 mysql> SELECT * FROM training;
 +----+-----------+----------+
 | id | name      | duration |
@@ -320,13 +333,6 @@ mysql> exit
 Bye
 bash-4.4# exit
 exit
-
-```
-
-Expected output
-<pre>
-jegan@tektutor.org:~/devops-aug-2023$ docker run -dit --name python --hostname python python:latest bash
-17c7493b364a4172090bab1cf7daad1d485e2bfb7d0e8c132381832f1d3ce47f
 </pre>
 
 Listing the running containers
