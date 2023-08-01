@@ -70,19 +70,6 @@ mysql> SHOW TABLES;'
 +--------------------+
 1 row in set (0.00 sec)
 
-    '> ;
-    '> 
-    '> 
-    '> .
-    '> ;
-    '> 
-    '> 
-    '> 
-    '> 
-    '> 
-    '> SELECT * FROM training;
-    '> ;
-    '> ^C
 mysql> SELECT * FROM training;
 +----+-----------+----------+
 | id | name      | duration |
