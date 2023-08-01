@@ -48,7 +48,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql> SHOW DATABASES;
 +--------------------+
 | Database           |
-+--------------------+
++--------------------+0
 | information_schema |
 | mysql              |
 | performance_schema |
@@ -56,7 +56,7 @@ mysql> SHOW DATABASES;
 | tektutor           |
 +--------------------+
 5 rows in set (0.00 sec)
-
+0
 mysql> USE tektutor;
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
@@ -134,7 +134,7 @@ bd36c7bfe5f4: Pull complete python
 dd8b7ef87a9d: Pull complete 
 4de52e7027c5: Pull complete 
 Digest: sha256:9a1b705aecedc76e8bf87dfca091d7093df3f2dd4765af6c250134ce4298a584
-Status: Downloaded newer image for python:latest
+Status: Downloaded newer image for python:latest0
 docker.io/library/python:latest
 </pre>
 
@@ -197,7 +197,7 @@ Let's create a new mysql container
 docker run -dit --name python --hostname python python:latest bashjegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root
 ```
 
-Let's get inside the mysql container
+Let's get inside the mysql container0
 ```
 docker exec -it mysql bash
 mysql -u root -p
@@ -211,7 +211,7 @@ Expected output
 <pre>
 jegan@tektutor.org:~/devops-aug-2023$ docker run -d --name mysql --hostname mysql -v /tmp/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest
 f1bb0361a59266aeccd57303070ecb182565e77b512db932d2d5e7972c2f63cc
-
+0
 jegan@tektutor.org:~/devops-aug-2023$ docker exec -it mysql bash
 
 bash-4.4# mysql -u root -p
@@ -640,3 +640,76 @@ Bye
 bash-4.4# exit
 exit  
 </pre>
+
+## Lab - Port Forwarding to expose container services to external world
+First we would like to create 3 nginx web servers
+```
+docker run -d --name server1 --hostname server1 nginx:latest
+docker run -d --name server2 --hostname server2 nginx:latest
+docker run -d --name server3 --hostname server3 nginx:latest
+```
+
+Let's create a container for Load Balancing with Port forwarding
+```
+docker run -d --name lb --hostname lb -p 8001:80 nginx:latest
+```
+
+Let's list all containers and see if they are running
+```
+docker ps
+```
+
+In order to configure the lb container to work like a Load Balancer, we need copy the below nginx.conf file onto the lb container
+
+'''
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+
+    upstream servers {
+        server  172.17.0.2:80;
+        server  172.17.0.3:80;
+        server  172.17.0.4:80;
+    }
+
+    server {
+        location / {
+            proxy_pass http://servers;
+        }
+    }
+}  
+'''
+
+We need to copy the above file into lb container
+```
+docker cp nginx.conf lb:/etc/nginx/nginx.conf
+docker restart lb
+docker ps
+```
+
+Let's customize the server1, server2 and server3 web pages
+```
+echo "Server 1" > index.html
+docker cp index.html server1:/usr/share/nginx/html/index.html
+
+echo "Server 2" > index.html
+docker cp index.html server2:/usr/share/nginx/html/index.html
+
+echo "Server 3" > index.html
+docker cp index.html server3:/usr/share/nginx/html/index.html
+```
+
+Now, you may try accessing the load balancer as shown below from your chrome web browser
+```
+http://localhost:8001
+```
+Whenever a request hits port 8001 it would be forwarded to one of the web servers ( server1, server2, or server 3)
+
