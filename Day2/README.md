@@ -117,18 +117,31 @@ Deleted: sha256:bb01bd7e32b58b6694c8c3622c230171f1cec24001a82068a8d30d338f420d6c
 ## Lab - Creating a container and running it in background
 ```
 docker run -dit --name python --hostname python python:latest bash
-docker ps
-docker exec -it python bash
 ```
 
 Expected output
 <pre>
 jegan@tektutor.org:~/devops-aug-2023$ docker run -dit --name python --hostname python python:latest bash
 17c7493b364a4172090bab1cf7daad1d485e2bfb7d0e8c132381832f1d3ce47f
+</pre>
+
+Listing the running containers
+```
+docker ps
+```
+Expected output
+<pre>
 jegan@tektutor.org:~/devops-aug-2023$ docker ps
 CONTAINER ID   IMAGE           COMMAND   CREATED         STATUS         PORTS     NAMES
 17c7493b364a   python:latest   "bash"    2 seconds ago   Up 2 seconds             python
+</pre>
 
+Getting inside the container that runs in background
+```
+docker exec -it python bash
+```
+Expected output
+<pre>
 jegan@tektutor.org:~/devops-aug-2023$ docker exec -it python bash
 root@python:/# ls
 bin   dev  home  lib32	libx32	mnt  proc  run	 srv  tmp  var
@@ -136,7 +149,6 @@ boot  etc  lib	 lib64	media	opt  root  sbin  sys  usr
 root@python:/# exit
 exit
 </pre>  
-
 
 ## Lab - Deleting containers
 ```
