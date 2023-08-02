@@ -542,3 +542,35 @@ root@ubuntu2:~# <b>exit</b>
 logout
 Connection to localhost closed. 
 </pre>
+
+## Lab - Running your first ansible ad-hoc command
+```
+cd ~/devops-aug-2023
+git pull
+cd Day3/ansible
+ansible -i hosts all -m ping
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/static-inventory$ <b>cat hosts</b>
+[all]
+ubuntu1 ansible_user=root ansible_port=2001 ansible_host=localhost ansible_private_key_file=~/.ssh/id_rsa
+ubuntu2 ansible_user=root ansible_port=2002 ansible_host=localhost ansible_private_key_file=~/.ssh/id_rsa
+  
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/static-inventory$ <b>ansible -i hosts all -m ping</b>
+ubuntu1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+ubuntu2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}  
+</pre>
