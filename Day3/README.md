@@ -1785,6 +1785,20 @@ jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ curl http://localho
 ```
 
 ## Lab - Downloading Artifacts from JFrog Artifactory using Ansible Playbook
+In case your JFrog Artifactory is not running, you may try this
+```
+docker run --name artifactory  -d -p 8081-8082:8081-8082 releases-docker.jfrog.io/jfrog/artifactory-oss:latest
+```
+
+We need to deploy some artifacts to the JFrog artifactory
+```
+cd ~/devops-aug-2023
+git pull
+cd Day1/multi-module-project
+mvn deploy
+```
+
+Now you may try download the frontend jar from JFrog artifactory
 ```
 cd ~/devops-aug-2023
 git pull
