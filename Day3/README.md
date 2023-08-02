@@ -119,41 +119,7 @@ jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
 CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
 f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
 ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
-jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-Someone could be eavesdropping on you right now (man-in-the-middle attack)!
-It is also possible that a host key has just been changed.
-The fingerprint for the ED25519 key sent by the remote host is
-SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
-Please contact your system administrator.
-Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
-Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
-  remove with:
-  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
-Host key for [localhost]:2001 has changed and you have requested strict checking.
-Host key verification failed.
-jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
- /home/jegan/.ssh/known_hosts
-jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-Someone could be eavesdropping on you right now (man-in-the-middle attack)!
-It is also possible that a host key has just been changed.
-The fingerprint for the ED25519 key sent by the remote host is
-SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
-Please contact your system administrator.
-Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
-Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
-  remove with:
-  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
-Host key for [localhost]:2001 has changed and you have requested strict checking.
-Host key verification failed.
-jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+
 jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
 The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
 ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
