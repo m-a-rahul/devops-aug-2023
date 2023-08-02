@@ -1674,3 +1674,33 @@ ubuntu1 | SUCCESS => {
     "changed": false
 }
 </pre>
+
+## Lab - Running your first ansible playbook
+```
+cd ~/devops-aug-2023
+git pull
+cd Day3/ansible/playbooks
+
+ansible-playbook -i hosts ping-playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ <b>ls</b>
+hosts  ping-playbook.yml
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ <b>ansible-playbook -i hosts ping-playbook.yml</b>
+
+PLAY [This playbook will ping the ansible nodes] ******************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************************
+ok: [ubuntu1]
+ok: [ubuntu2]
+
+TASK [Ping ansible node] ******************************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+PLAY RECAP ********************************************************************************************************************
+ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
+</pre>
