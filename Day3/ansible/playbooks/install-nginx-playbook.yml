@@ -1,6 +1,16 @@
 - name: This playbook will install nginx, configure nginx web root folder, deploy custom html page
   hosts: all
+  vars:
+  - provisioner_tool: Docker
+  - conf_mgr_tool: Ansible
+  - greeting_msg: DevOps
   tasks:
+  - name: Retrieve IP address
+    shell: hostname -i
+    register: output
+
+  - debug: var=output
+
   - name: Install nginx in Ubuntu
     apt: name=nginx state=latest update_cache=yes
 
@@ -11,7 +21,7 @@
     file: path=/var/html mode=0755 state=directory 
 
   - name: Deploy custom html page
-    copy: src=index.html dest=/var/html/index.html
+    template: src=index.html dest=/var/html/index.html
 
   - name: Configure nginx web root folder in Ubuntu
     copy: src=default dest=/etc/nginx/sites-available/default 
