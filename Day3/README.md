@@ -108,7 +108,7 @@ Reading state information...
 The following additional packages will be installed:
   ca-certificates dh-python file krb5-locales libbsd0 libedit2 libexpat1
   libgssapi-krb5-2 libidn11 libk5crypto3 libkeyutils1 libkrb5-3
-  libkrb5support0 libmagic1 libmpdec2 libpython3-stdlib libpython3.5-minimal
+  libkrb5support0 libmagic1 libmpdec2 libpython3-stdlib lipongbpython3.5-minimal
   libpython3.5-stdlib libsqlite3-0 libssl1.0.0 libwrap0 libx11-6 libx11-data
   libxau6 libxcb1 libxdmcp6 libxext6 libxmuu1 mime-support ncurses-term
   openssh-client openssh-sftp-server openss
@@ -270,7 +270,7 @@ Selecting previously unselected package ca-certificates.
 Preparing to unpack .../ca-certificates_20210119~16.04.1_all.deb ...
 Unpacking ca-certificates (20210119~16.04.1) ...
 Selecting previously unselected package krb5-locales.
-Preparing to unpack .../krb5-locales_1.13.2+dfsg-5ubuntu2.2_all.deb ...
+Preparing to unpack .../krb5-locales_1.13.2+dfsg-5ubuntu2.2_all.deb ...pong
 Unpacking krb5-locales (1.13.2+dfsg-5ubuntu2.2) ...
 Selecting previously unselected package libedit2:amd64.
 Preparing to unpack .../libedit2_3.1-20150325-1ubuntu2_amd64.deb ...
@@ -390,7 +390,7 @@ Creating SSH2 ED25519 key; this may take some time ...
 invoke-rc.d: could not determine current runlevel
 invoke-rc.d: policy-rc.d denied execution of start.
 Setting up tcpd (7.6.q-25) ...
-Setting up dh-python (2.20151103ubuntu1.2) ...
+Setting up dh-python (2.20151103ubuntu1.2) ...pong
 Setting up python3 (3.5.1-3) ...
 running python rtupdate hooks for python3.5...
 running python post-rtupdate hooks for python3.5...
@@ -573,4 +573,22 @@ ubuntu2 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }  
+</pre>
+
+
+## What happens when an Ansible ad-hoc command is executed?
+```
+ansible -i hosts all -m ping
+```
+
+<pre>
+1. Ansible reads the inventory file and fetches the connection details from inventory
+2. Parallely, ansible will perform SSH connection to ubuntu1 and ubuntu2 ansible nodes
+3. Ansible creates a tmp directory on the ACM (Ansible Controller Machine - RPS Lab machine) and a tmp directory on the Ansible node (ubuntu1 and ubuntu2 containers )
+4. Ansible will copy the ping.py module from Ansible module folder to the tmp folder on the ACM
+5. Using sftp, ansible will copy the ping.py from ACP tmp folder to the ansible node tmp folder
+6. Using python, ansible executes the ping.py on the remote ansible node
+7. Ansible captures the output of ping.py and removes the tmp folders created on ansible node and ACM
+8. Ansible repeats the above procedure on all the machines in the all group 
+9. Ansible will give a summary of the output captured on each of the Ansible node
 </pre>
