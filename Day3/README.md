@@ -111,14 +111,542 @@ The following additional packages will be installed:
   libkrb5support0 libmagic1 libmpdec2 libpython3-stdlib libpython3.5-minimal
   libpython3.5-stdlib libsqlite3-0 libssl1.0.0 libwrap0 libx11-6 libx11-data
   libxau6 libxcb1 libxdmcp6 libxext6 libxmuu1 mime-support ncurses-term
-  openssh-client openssh-sftp-server openssl python3-chardet python3-minimal
+  openssh-client openssh-sftp-server openssjegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
+ /home/jegan/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
+ /home/jegan/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
+ /home/jegan/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
+ /home/jegan/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyrijegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
+ /home/jegan/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.
+ght.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.
+
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.
+l python3-chardet python3-minimal
   python3-pkg-resources python3-requests python3-six python3-urllib3 python3.5
   python3.5-minimal ssh-import-id tcpd wget xauth
 Suggested packages:
   libdpkg-perl krb5-doc krb5-user ssh-askpass libpam-ssh keychain monkeysphere
   rssh molly-guard ufw python3-doc python3-tk python3-venv python3-setuptools
   python3-ndg-httpsclient python3-openssl python3-pyasn1 python3.5-venv
-  python3.5-doc binutils binfmt-support
+  python3.5-doc binutils binfmt-supportjegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
+ /home/jegan/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.
+
 The following NEW packages will be installed:
   ca-certificates dh-python file krb5-locales libbsd0 libedit2 libexpat1
   libgssapi-krb5-2 libidn11 libk5crypto3 libkeyutils1 libkrb5-3
@@ -138,7 +666,271 @@ Get:3 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libexpat1 amd64
 Get:4 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 python3.5-minimal amd64 3.5.2-2ubuntu0~16.04.13 [1597 kB]
 Get:5 http://archive.ubuntu.com/ubuntu xenial/main amd64 python3-minimal amd64 3.5.1-3 [23.3 kB]
 Get:6 http://archive.ubuntu.com/ubuntu xenial/main amd64 mime-support all 3.59ubuntu1 [31.0 kB]
-Get:7 http://archive.ubuntu.com/ubuntu xenial/main amd64 libmpdec2 amd64 2.4.2-1 [82.6 kB]
+Get:7 http://archive.ubuntu.com/ubuntu xenijegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
+ /home/jegan/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyrjegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
+ /home/jegan/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
+ /home/jegan/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.
+
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.
+ight.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.
+al/main amd64 libmpdec2 amd64 2.4.2-1 [82.6 kB]
 Get:8 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libsqlite3-0 amd64 3.11.0-1ubuntu1.5 [398 kB]
 Get:9 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpython3.5-stdlib amd64 3.5.2-2ubuntu0~16.04.13 [2135 kB]
 Get:10 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 python3.5 amd64 3.5.2-2ubuntu0~16.04.13 [165 kB]
@@ -418,7 +1210,95 @@ Step 4/12 : RUN mkdir -p /var/run/sshd
  ---> Running in ac16c5e92d8c
 Removing intermediate container ac16c5e92d8c
  ---> 221e5f9503b3
-Step 5/12 : RUN echo 'root:root' | chpasswd
+Step 5/12 : RUN echo 'root:root' | chpasswdjegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
+ /home/jegan/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.
+
  ---> Running in 893ddb1b94ea
 Removing intermediate container 893ddb1b94ea
  ---> db2658b138f9
@@ -457,9 +1337,172 @@ You can now check if the newly built image shows up in your local docker registr
 docker images
 ```
 
-Expected output
+Expected outputjegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" ~/.ssh/known_hosts
+ /home/jegan/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+Please contact your system administrator.
+Add correct host key in /home/jegan/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/jegan/.ssh/known_hosts:2
+  remove with:
+  ssh-keygen -f "/home/jegan/.ssh/known_hosts" -R "[localhost]:2001"
+Host key for [localhost]:2001 has changed and you have requested strict checking.
+Host key verification failed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ echo "" > ~/.ssh/known_hosts
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.
+
 <pre>
 jegan@tektutor.org:~/devops-aug-2023$ docker images
 REPOSITORY                                       TAG            IMAGE ID       CREATED          SIZE
 <b>tektutor/ansible-ubuntu-node                     latest         aa02cbf3806f   12 minutes ago   220MB</b>
+</pre>
+
+## Lab - Creating two containers from the custom ubuntu image 
+```
+docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest
+docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
+jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+</pre>
+
+
+Let us now check if we are able to SSH into the ubuntu1 and ubuntu2 containers without password
+```
+ssh -p 2001 root@localhost
+ssh -p 2002 root@localhost
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+  
+jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
+ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:2: [hashed name]
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed. 
 </pre>
