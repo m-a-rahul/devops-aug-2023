@@ -207,7 +207,7 @@ Effective user-specific configuration settings:
 </settings>
 
 
-[INFO] ------------------------------------------------------------------------
+[INFO] -------------------------------------------------------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-----------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  0.454 s
@@ -261,7 +261,7 @@ It is a part of the lifecycle for the POM packaging 'jar'. This lifecycle includ
 * deploy: org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy
 
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
+[INFO] BUILD SUCCESS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
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  0.466 s
 [INFO] Finished at: 2023-07-31T13:50:23+05:30
@@ -276,7 +276,7 @@ mvn help:describe -Dcmd=clean
 ```
 
 Expected output
-<pre>
+<pre>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
 egan@tektutor.org:~/devops-aug-2023/Day1/hello$ mvn help:describe -Dcmd=clean
 [INFO] Scanning for projects...
 [INFO] 
@@ -1485,3 +1485,12 @@ Uploaded to jfrog: http://localhost:8082/artifactory/tektutor/org/tektutor/main/
 [INFO] Finished at: 2023-07-31T17:55:46+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
+
+## Maven profiles
+```
+cd ~/devops-aug-2023
+git pull
+cd Day1/profiles
+mvn test -P test
+mvn test -P package
+```
