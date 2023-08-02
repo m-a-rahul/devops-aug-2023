@@ -474,16 +474,16 @@ docker ps
 
 Expected output
 <pre>
-jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+jegan@tektutor.org:~/devops-aug-2023/Day3$ <b>docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest</b>
 ef8060c8bc0dde8af64217b49e936a4675e579cda9f48752e131ec9c6898ad3b
   
-jegan@tektutor.org:~/devops-aug-2023/Day3$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+jegan@tektutor.org:~/devops-aug-2023/Day3$ <b>docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest</b>
 f9fda1ed6e0a0782ea2c110903a68ad535c2d82abe464a755ad3bd35388d9541
   
-jegan@tektutor.org:~/devops-aug-2023/Day3$ docker ps
+jegan@tektutor.org:~/devops-aug-2023/Day3$ <b>docker ps</b>
 CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
-f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
-ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+<b>f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   2 seconds ago    Up 1 second     0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   12 seconds ago   Up 11 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1</b>
 </pre>
 
 
@@ -495,11 +495,11 @@ ssh -p 2002 root@localhost
 
 Expected output
 <pre>
-jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2001 root@localhost
+jegan@tektutor.org:~/devops-aug-2023/Day3$ <b>ssh -p 2001 root@localhost</b>
 The authenticity of host '[localhost]:2001 ([127.0.0.1]:2001)' can't be established.
 ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
 This key is not known by any other names
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Are you sure you want to continue connecting (yes/no/[fingerprint])? <b>yes</b>
 Warning: Permanently added '[localhost]:2001' (ED25519) to the list of known hosts.
 Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
 
@@ -514,16 +514,16 @@ individual files in /usr/share/doc/*/copyright.
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 
-root@ubuntu1:~# exit
+root@ubuntu1:~# <b>exit</b>
 logout
 Connection to localhost closed.
   
-jegan@tektutor.org:~/devops-aug-2023/Day3$ ssh -p 2002 root@localhost
+jegan@tektutor.org:~/devops-aug-2023/Day3$ <b>ssh -p 2002 root@localhost</b>
 The authenticity of host '[localhost]:2002 ([127.0.0.1]:2002)' can't be established.
 ED25519 key fingerprint is SHA256:b4El6stdTQLJPBcyx1MWq7sfoiS3o6SC1CcotxEjMw8.
 This host key is known by the following other names/addresses:
     ~/.ssh/known_hosts:2: [hashed name]
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Are you sure you want to continue connecting (yes/no/[fingerprint])? <b>yes</b>
 Warning: Permanently added '[localhost]:2002' (ED25519) to the list of known hosts.
 Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-50-generic x86_64)
 
@@ -538,7 +538,7 @@ individual files in /usr/share/doc/*/copyright.
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 
-root@ubuntu2:~# exit
+root@ubuntu2:~# <b>exit</b>
 logout
 Connection to localhost closed. 
 </pre>
