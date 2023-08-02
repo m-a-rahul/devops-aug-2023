@@ -547,7 +547,7 @@ Connection to localhost closed.
 ```
 cd ~/devops-aug-2023
 git pull
-cd Day3/ansible
+cd Day3/ansible/static-inventory
 ansible -i hosts all -m ping
 ```
 
