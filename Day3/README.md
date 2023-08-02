@@ -462,7 +462,7 @@ REPOSITORY                                       TAG            IMAGE ID       C
 
 Delete all existing containers
 ```
-docker rm $(docker ps -aq)
+docker rm -f $(docker ps -aq)
 ```
 
 Now you may create two new containers using our custom docker ubuntu image
