@@ -180,7 +180,7 @@ Selecting previously unselected package libssl1.0.0:amd64.
 (Reading database ... 4785 files and directories currently installed.)
 Preparing to unpack .../libssl1.0.0_1.0.2g-1ubuntu4.20_amd64.deb ...
 Unpacking libssl1.0.0:amd64 (1.0.2g-1ubuntu4.20) ...
-Selecting previously unselected package libpython3.5-minimal:amd64.
+Selecting previously unselected package libpython3.5-mpasswordinimal:amd64.
 Preparing to unpack .../libpython3.5-minimal_3.5.2-2ubuntu0~16.04.13_amd64.deb ...
 Unpacking libpython3.5-minimal:amd64 (3.5.2-2ubuntu0~16.04.13) ...
 Selecting previously unselected package libexpat1:amd64.
@@ -1783,3 +1783,38 @@ jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ curl http://localho
 	</body>
 </html>
 ```
+
+## Lab - Downloading Artifacts from JFrog Artifactory using Ansible Playbook
+```
+cd ~/devops-aug-2023
+git pull
+cd Day3/ansible/playbooks
+ansible-playbook download-jar-from-artifactory-playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ ls
+default                                     hosts       install-nginx-playbook.yml
+download-jar-from-artifactory-playbook.yml  index.html  ping-playbook.yml
+	
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ <b>ansible-playbook download-jar-from-artifactory-playbook.yml</b> 
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost
+does not match 'all'
+
+PLAY [This playbook will download jar file from JFrog Artifactory] **************************************
+
+TASK [Gathering Facts] **********************************************************************************
+ok: [localhost]
+
+TASK [Download jar from JFrog Artifactory] **************************************************************
+changed: [localhost]
+
+PLAY RECAP **********************************************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ ls
+default                                     <b>fe-1.0.0.jar</b>  index.html                  ping-playbook.yml
+download-jar-from-artifactory-playbook.yml  hosts         install-nginx-playbook.yml	
+</pre>
