@@ -451,3 +451,15 @@ Removing intermediate container 8a73c47e209d
 Successfully built aa02cbf3806f
 Successfully tagged tektutor/ansible-ubuntu-node:latest
 </pre>
+
+You can now check if the newly built image shows up in your local docker registry
+```
+docker images
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023$ docker images
+REPOSITORY                                       TAG            IMAGE ID       CREATED          SIZE
+<b>tektutor/ansible-ubuntu-node                     latest         aa02cbf3806f   12 minutes ago   220MB</b>
+</pre>
