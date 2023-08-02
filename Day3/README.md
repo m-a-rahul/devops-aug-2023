@@ -1704,3 +1704,82 @@ PLAY RECAP *********************************************************************
 ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
 </pre>
+
+## Lab - Installing nginx web server and configure the nginx web server using Ansible playbook
+```
+cd ~/devops-aug-2023
+git pull
+cd Day3/ansible/playbooks
+ansible-playbook -i hosts install-nginx-playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ ls
+default  hosts  index.html  install-nginx-playbook.yml  ping-playbook.yml
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ vim install-nginx-playbook.yml 
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ ansible-playbook -i hosts install-nginx-playbook.yml 
+
+PLAY [This playbook will install nginx, configure nginx web root folder, deploy custom html page] *******
+
+TASK [Gathering Facts] **********************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+TASK [Install nginx in Ubuntu] **************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+TASK [Start the nginx service in Ubuntu] ****************************************************************
+changed: [ubuntu2]
+changed: [ubuntu1]
+
+TASK [Create the custom web root folder in Ubuntu] ******************************************************
+changed: [ubuntu2]
+changed: [ubuntu1]
+
+TASK [Deploy custom html page] **************************************************************************
+changed: [ubuntu2]
+changed: [ubuntu1]
+
+TASK [Configure nginx web root folder in Ubuntu] ********************************************************
+changed: [ubuntu1]
+changed: [ubuntu2]
+
+TASK [Restart nginx web server in Ubuntu] ***************************************************************
+changed: [ubuntu1]
+changed: [ubuntu2]
+
+PLAY RECAP **********************************************************************************************
+ubuntu1                    : ok=7    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2                    : ok=7    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  </pre>
+
+Testing if our custom web page is served by nginx
+```
+curl http://localhost:8001
+curl http://localhost:8002
+```
+
+Expected output
+```
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ curl http://localhost:8001
+<html>
+	<head>
+		<title>Welcome to DevOps!</title>
+	</head>
+	<body>
+		<h3>Configured by Ansible</h3>
+		<h3>Provisioned by Docker</h3>
+	</body>
+</html>
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ curl http://localhost:8002
+<html>
+	<head>
+		<title>Welcome to DevOps!</title>
+	</head>
+	<body>
+		<h3>Configured by Ansible</h3>
+		<h3>Provisioned by Docker</h3>
+	</body>
+</html>
+```
