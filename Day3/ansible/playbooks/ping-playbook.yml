@@ -1,5 +1,6 @@
 - name: This playbook will ping the ansible nodes
   hosts: all
+  gather_facts: yes 
   tasks:
   - name: Ping ansible node
     ping:
