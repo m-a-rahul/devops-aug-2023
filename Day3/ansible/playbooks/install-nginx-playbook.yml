@@ -1,4 +1,4 @@
-- name: This playbook will install nginx, configure nginx web root folder, deploy custom html page
+- name: This play will install nginx, configure nginx web root folder, deploy custom html page
   hosts: all
   vars:
   - provisioner_tool: Docker
@@ -29,3 +29,14 @@
   - name: Restart nginx web server in Ubuntu
     shell: service nginx restart
 
+- name: This play will test the nginx web server
+  hosts: localhost 
+  tasks:
+  - name: Access the nginx web page
+    shell: "curl http://localhost:{{item}}"
+    with_sequence: start=8001 end=8002
+    register: output1
+    ignore_errors: yes
+
+  - debug: var=output1
+    when: output1.results[0].rc != 0
