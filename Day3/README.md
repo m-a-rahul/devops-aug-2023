@@ -459,6 +459,13 @@ REPOSITORY                                       TAG            IMAGE ID       C
 </pre>
 
 ## Lab - Creating two containers from the custom ubuntu image 
+
+Delete all existing containers
+```
+docker rm $(docker ps -aq)
+```
+
+Now you may create two new containers using our custom docker ubuntu image
 ```
 docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest
 docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest
