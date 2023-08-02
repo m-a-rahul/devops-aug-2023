@@ -1832,3 +1832,126 @@ jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ ls
 default                                     <b>fe-1.0.0.jar</b>  index.html                  ping-playbook.yml
 download-jar-from-artifactory-playbook.yml  hosts         install-nginx-playbook.yml	
 </pre>
+
+
+## Lab - Passing extra arguments to Ansible playbook
+```
+cd ~/devops-aug-2023
+git pull
+cd Day3/ansible/playbooks
+
+ansible-playbook -i hosts install-nginx-playbook.yml -e provisioner_tool=Terraform
+```
+
+Expected output
+```
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ ansible-playbook -i hosts install-nginx-playbook.yml -e provisioner_tool=Terraform
+[DEPRECATION WARNING]: Specifying a list of dictionaries for vars is deprecated in favor of specifying a
+ dictionary. This feature will be removed in version 2.18. Deprecation warnings can be disabled by 
+setting deprecation_warnings=False in ansible.cfg.
+
+PLAY [This play will install nginx, configure nginx web root folder, deploy custom html page] ***********
+
+TASK [Gathering Facts] **********************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+TASK [Retrieve IP address] ******************************************************************************
+changed: [ubuntu1]
+changed: [ubuntu2]
+
+TASK [debug] ********************************************************************************************
+ok: [ubuntu1] => {
+    "output": {
+        "changed": true,
+        "cmd": "hostname -i",
+        "delta": "0:00:00.005897",
+        "end": "2023-08-02 11:33:43.749171",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2023-08-02 11:33:43.743274",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "172.17.0.2",
+        "stdout_lines": [
+            "172.17.0.2"
+        ]
+    }
+}
+ok: [ubuntu2] => {
+    "output": {
+        "changed": true,
+        "cmd": "hostname -i",
+        "delta": "0:00:00.005889",
+        "end": "2023-08-02 11:33:43.750418",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2023-08-02 11:33:43.744529",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "172.17.0.3",
+        "stdout_lines": [
+            "172.17.0.3"
+        ]
+    }
+}
+
+TASK [Install nginx in Ubuntu] **************************************************************************
+ok: [ubuntu1]
+ok: [ubuntu2]
+
+TASK [Start the nginx service in Ubuntu] ****************************************************************
+changed: [ubuntu1]
+changed: [ubuntu2]
+
+TASK [Create the custom web root folder in Ubuntu] ******************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+TASK [Deploy custom html page] **************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+TASK [Configure nginx web root folder in Ubuntu] ********************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+
+TASK [Restart nginx web server in Ubuntu] ***************************************************************
+changed: [ubuntu1]
+changed: [ubuntu2]
+
+PLAY [This play will test the nginx web server] *********************************************************
+
+TASK [Gathering Facts] **********************************************************************************
+ok: [localhost]
+
+TASK [Access the nginx web page] ************************************************************************
+changed: [localhost] => (item=8001)
+changed: [localhost] => (item=8002)
+
+TASK [debug] ********************************************************************************************
+skipping: [localhost]
+
+PLAY RECAP **********************************************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+ubuntu1                    : ok=9    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2                    : ok=9    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ curl http://localhost:8001
+<html>
+	<head>
+		<title>Welcome to DevOps!</title>
+	</head>
+	<body>
+		<h3>Configured by Ansible</h3>
+		<h3>Provisioned by Terraform</h3>
+		<h3>Ubuntu - v16.04
+		<h3>OS Family - Debian</h3>
+		<h3>IP Address - 172.17.0.2 </h3>
+		<h3>Hostname - ubuntu1</h3>
+		<h3>Python - v3.5.2</h3>
+	</body>
+</html>
+```
