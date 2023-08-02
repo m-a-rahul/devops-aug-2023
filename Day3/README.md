@@ -1,3 +1,8 @@
+## My medium blog for Ansible AWX Installation
+<pre>
+https://medium.com/@jegan_50867/installing-ansible-tower-awx-e46d5231357d
+</pre>
+
 # Ansible
 - Configuration Management Tool
   - helps in automating software installation and configurations on existing OS
