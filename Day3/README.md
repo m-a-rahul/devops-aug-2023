@@ -1686,9 +1686,9 @@ ansible-playbook -i hosts ping-playbook.yml
 
 Expected output
 <pre>
-jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ ls
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ <b>ls</b>
 hosts  ping-playbook.yml
-jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ ansible-playbook -i hosts ping-playbook.yml 
+jegan@tektutor.org:~/devops-aug-2023/Day3/ansible/playbooks$ <b>ansible-playbook -i hosts ping-playbook.yml</b>
 
 PLAY [This playbook will ping the ansible nodes] ******************************************************************************
 
