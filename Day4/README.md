@@ -159,3 +159,16 @@ Accessing Prometheus Dashboard from RPS Lab Machine Chrome browser
 ```
 http://localhost:9090
 ```
+
+You need to edit the prometheus.yml file and replace your RPS machine Ip address in the place of 192.168.1.108 before copying to the prometheus container
+```
+cd ~/devops-aug-2023
+git pull
+
+cd Day4/prometheus
+docker cp prometheus.yml prometheus:/opt/bitnami/prometheus/conf/prometheus.yml
+docker restart prometheus
+docker ps
+```
+
+Now check the Status-->Targets menu in the Prometheus Dashboard from your RPS chrome browser. You should see two target, both showing Up. This might take few seconds to update.
