@@ -128,3 +128,34 @@ You may now try accessing the Jenkins Dashboard web page on your RPS Lab machine
 ```
 http://localhost:8080
 ```
+
+## Lab - Setup Prometheus using container
+```
+docker run -d --name prometheus --hostname prometheus -p 9090:9090 bitnami/prometheus:latest
+docker ps
+
+```
+
+Expected output
+<pre>
+jegan@tektutor.org:~/devops-aug-2023$ <b>docker run -d --name prometheus --hostname prometheus -p 9090:9090 bitnami/prometheus:latest</b>
+Unable to find image 'bitnami/prometheus:latest' locally
+latest: Pulling from bitnami/prometheus
+7aa706a82829: Pull complete 
+Digest: sha256:71c61a6bf5da86ed1be0c0a1df9df63a22bdfa7e955985faa2ea3284a45f865e
+Status: Downloaded newer image for bitnami/prometheus:latest
+b19b602d98ee93f6ff2a5bad3e451dfe58491341fdc5595727065c9c8603ac90
+  
+jegan@tektutor.org:~/devops-aug-2023$ <b>docker ps</b>
+CONTAINER ID   IMAGE                                                   COMMAND                  CREATED          STATUS             PORTS                                                                          NAMES
+<b>b19b602d98ee   bitnami/prometheus:latest                               "/opt/bitnami/promet…"   3 seconds ago    Up 2 seconds       0.0.0.0:9090->9090/tcp, :::9090->9090/tcp                                      prometheus</b>
+20191d0936b2   tektutor/ansible-ubuntu-node:latest                     "/usr/sbin/sshd -D"      53 minutes ago   Up 53 minutes      0.0.0.0:2003->22/tcp, :::2003->22/tcp, 0.0.0.0:8003->80/tcp, :::8003->80/tcp   ubuntu3
+2761d145b5a4   releases-docker.jfrog.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   25 hours ago     Up About an hour   0.0.0.0:8081-8082->8081-8082/tcp, :::8081-8082->8081-8082/tcp                  artifactory
+f9fda1ed6e0a   tektutor/ansible-ubuntu-node:latest                     "/usr/sbin/sshd -D"      29 hours ago     Up 58 minutes      0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+ef8060c8bc0d   tektutor/ansible-ubuntu-node:latest                     "/usr/sbin/sshd -D"      29 hours ago     Up 58 minutes      0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1  
+</pre>
+
+Accessing Prometheus Dashboard from RPS Lab Machine Chrome browser
+```
+http://localhost:9090
+```
