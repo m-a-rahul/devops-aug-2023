@@ -77,12 +77,13 @@ java -jar ./jenkins.war --enable-future-java
 
 Expected output
 <pre>
-jegan@tektutor.org:~/Downloads$ java -jar ./jenkins.war
+jegan@tektutor.org:~/Downloads$ <b>java -jar ./jenkins.war</b>
 Running with Java 18 from /usr/lib/jvm/java-18-openjdk-amd64, which is not yet fully supported.
 Run the command again with the --enable-future-java flag to enable preview support for future Java versions.
 Supported Java versions are: [11, 17]
 See https://jenkins.io/redirect/java-support/ for more information.
-jegan@tektutor.org:~/Downloads$ java -jar ./jenkins.war --enable-future-java
+  
+jegan@tektutor.org:~/Downloads$ <b>java -jar ./jenkins.war --enable-future-java</b>
 Running with Java 18 from /usr/lib/jvm/java-18-openjdk-amd64, which is not fully supported. Continuing because --enable-future-java is set. Supported Java versions are: [11, 17]. See https://jenkins.io/redirect/java-support/ for more information.
 Running from: /home/jegan/Downloads/jenkins.war
 webroot: /home/jegan/.jenkins/war
@@ -109,7 +110,7 @@ webroot: /home/jegan/.jenkins/war
 2023-08-03 06:24:14.322+0000 [id=159]	INFO	hudson.util.Retrier#start: Attempt #1 to do the action check updates server
 2023-08-03 06:24:14.346+0000 [id=100]	INFO	jenkins.InitReactorRunner$1#onAttained: Completed initialization
 2023-08-03 06:24:14.398+0000 [id=37]	WARNING	o.j.p.w.flow.FlowExecutionList$1#computeNext: Failed to load Owner[DBChangePipeline/3:null]. Unregistering
-2023-08-03 06:24:14.400+0000 [id=37]	INFO	hudson.lifecycle.Lifecycle#onReady: Jenkins is fully up and running
+2023-08-03 06:24:14.400+0000 [id=37]	INFO	hudson.lifecycle.Lifecycle#onReady: <b>Jenkins is fully up and running</b>
 2023-08-03 06:24:28.283+0000 [id=159]	INFO	h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
 2023-08-03 06:24:29.435+0000 [id=159]	INFO	h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.plugins.gradle.GradleInstaller
 2023-08-03 06:24:30.366+0000 [id=159]	INFO	h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Ant.AntInstaller
@@ -117,3 +118,8 @@ webroot: /home/jegan/.jenkins/war
 2023-08-03 06:24:32.331+0000 [id=159]	INFO	hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
 2023-08-03 06:26:53.508+0000 [id=299]	INFO	i.j.docker.client.DockerAPI#getOrMakeClient: Cached connection io.jenkins.docker.client.DockerAPI$SharableDockerClient@17d3ea47 to DockerClientParameters{dockerUri='tcp://localhost:4243', credentialsId='null', readTimeoutInMsOrNull=60000, connectTimeoutInMsOrNull=60000}  
 </pre>
+
+You may now try accessing the Jenkins Dashboard web page on your RPS Lab machine Chrome web browser
+```
+http://localhost:8080
+```
