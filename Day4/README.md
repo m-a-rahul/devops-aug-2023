@@ -160,6 +160,14 @@ Accessing Prometheus Dashboard from RPS Lab Machine Chrome browser
 http://localhost:9090
 ```
 
+You need to install Prometheus Metrics Plugin in Jenkins and restart jenkins from the terminal(stop and restart jenkins).  
+
+Once the Prometheus plugin is installed and Jenkins is restarted, you should be able to access the Jenkins metrics at this url
+```
+http://localhost:9000/prometheus
+```
+
+
 You need to edit the prometheus.yml file and replace your RPS machine Ip address in the place of 192.168.1.108 before copying to the prometheus container
 ```
 cd ~/devops-aug-2023
