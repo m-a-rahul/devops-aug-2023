@@ -164,7 +164,7 @@ You need to install Prometheus Metrics Plugin in Jenkins and restart jenkins fro
 
 Once the Prometheus plugin is installed and Jenkins is restarted, you should be able to access the Jenkins metrics at this url
 ```
-http://localhost:9000/prometheus
+http://localhost:8080/prometheus
 ```
 
 
