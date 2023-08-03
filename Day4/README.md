@@ -1,3 +1,8 @@
+## My medium blogs
+<pre>
+https://medium.com/tektutor/ci-cd-with-maven-github-docker-jenkins-aca28c252fec  
+</pre>
+
 ## What is DevOps?
 - Developers
   - TDD (Test Driven Development) 
