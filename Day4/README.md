@@ -50,3 +50,7 @@
 - enterprise variant of Jenkins is called Cloudbees
   
 ## Jenkins Alternatives
+- TeamCity
+- Bamboo
+- Microsoft Team Foundation Server (TFS)
+- etc
