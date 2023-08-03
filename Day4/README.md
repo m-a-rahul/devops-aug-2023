@@ -180,3 +180,26 @@ docker ps
 ```
 
 Now check the Status-->Targets menu in the Prometheus Dashboard from your RPS chrome browser. You should see two target, both showing Up. This might take few seconds to update.
+
+## Lab - Setup Grafana
+
+Create Grafana container
+```
+docker run -d --name=grafana -p 3000:3000 grafana/grafana
+```
+
+Accessing Grafana Dashboard
+```
+http://localhost:3000
+```
+Defaut Login Credentials
+<pre>
+username - admin
+password - admin
+</pre>
+
+Change the Grafana password to
+<pre>
+username - admin
+password - Admin@123
+</pre>
