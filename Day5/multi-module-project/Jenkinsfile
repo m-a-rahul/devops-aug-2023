@@ -63,17 +63,5 @@ pipeline {
 				}
 			}
 		}
-		stage('Deploy') {
-			agent {
-				label 'jenkins-slave'
-			}
-			steps {
-				script {
-					dir("Day5/multi-module-project") {
-						sh "mvn deploy"
-					}
-				}
-			}
-		}
 	}
 }
