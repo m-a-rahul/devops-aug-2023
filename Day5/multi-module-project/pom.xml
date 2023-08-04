@@ -16,7 +16,6 @@
 		<module>bl</module>
 		<module>dal</module>
 		<module>main</module>
-		<module>cpp</module>
 	</modules>
 
 	<dependencies>
