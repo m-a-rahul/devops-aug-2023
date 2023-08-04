@@ -895,3 +895,14 @@ ansible -i inventory all -m win_ping
 
 Expected output
 ![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/175e5e33-f130-4b97-92d7-74c64566aed0)
+
+
+## Post Test URL
+<pre>
+https://app.mymapit.in/code4/tiny/dRdEYk  
+</pre>
+
+## Kindly give your training feedback at the below URL
+<pre>
+https://tcheck.co/HzQlr7
+</pre>
