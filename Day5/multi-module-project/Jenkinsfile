@@ -17,7 +17,7 @@ pipeline {
 		}
 		stage('Compile') {
 			agent {
-				label 'jenkins-docker-slave'
+				label 'jenkins-slave'
 			}
 			steps {
 				script {
@@ -29,7 +29,7 @@ pipeline {
 		}
 		stage('Unit Test') {
 			agent {
-				label 'jenkins-docker-slave'
+				label 'jenkins-slave'
 			}
 			steps {
 				script {
@@ -41,7 +41,7 @@ pipeline {
 		}
 		stage('Package') {
 			agent {
-				label 'jenkins-docker-slave'
+				label 'jenkins-slave'
 			}
 			steps {
 				script {
@@ -53,7 +53,7 @@ pipeline {
 		}
 		stage('Install') {
 			agent {
-				label 'jenkins-docker-slave'
+				label 'jenkins-slave'
 			}
 			steps {
 				script {
@@ -65,7 +65,7 @@ pipeline {
 		}
 		stage('Deploy') {
 			agent {
-				label 'jenkins-docker-slave'
+				label 'jenkins-slave'
 			}
 			steps {
 				script {
