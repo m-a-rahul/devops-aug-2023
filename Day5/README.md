@@ -123,7 +123,8 @@ WARNING: System::setSecurityManager will be removed in a future release
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #2 'Populate initial schema': success | time=40ms
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #100000 'Remove orphan rules in Quality Profiles'...
 2023.08.04 04:53:16 INFO  web[][o.s.s.p.d.m.s.MassUpdate] 0 rows processed (0 items/sec)
-2023.08.04 04:53:16 INFO  web[][DbMigrations] #100000 'Remove orphan rules in Quality Profiles': success | time=15ms
+2023.08.04 04:53:16 INFO  web[][DbMigrations] #100000 'Remove ```
+```orphan rules in Quality Profiles': success | time=15ms
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #100001 'Drop index 'projects_module_uuid' in the 'Components' table'...
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #100001 'Drop index 'projects_module_uuid' in the 'Components' table': success | time=8ms
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #100002 'Drop column 'module_uuid' in the 'Components' table'...
@@ -167,7 +168,10 @@ WARNING: System::setSecurityManager will be removed in a future release
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101002 'Add index on 'scm_accounts.scm_account'': success | time=3ms
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101003 'Add index on 'users.email''...
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101003 'Add index on 'users.email'': success | time=4ms
-2023.08.04 04:53:16 INFO  web[][DbMigrations] #101004 'Drop 'scm_accounts' column in 'users' table'...
+2023.08.04 04:53:16 INFO  w```
+```eb[][DbMigrations] #101004 'Drop 's```
+``````
+```cm_accounts' column in 'users' table'...
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101004 'Drop 'scm_accounts' column in 'users' table': success | time=12ms
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101005 'Add column 'is_main' to 'project_branches' table'...
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101005 'Add column 'is_main' to 'project_branches' table': success | time=8ms
@@ -195,7 +199,8 @@ WARNING: System::setSecurityManager will be removed in a future release
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101015 'Add 'external_groups' table.'...
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101015 'Add 'external_groups' table.': success | time=5ms
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101016 'Add index on 'external_groups(external_identity_provider, external_id).'...
-2023.08.04 04:53:16 INFO  web[][DbMigrations] #101016 'Add index on 'external_groups(external_identity_provider, external_id).': success | time=3ms
+2023.08.04 04:53:16 INFO  web[][DbMigrations] #101016 'Add index on 'external_groups(external_identity_provider, external_id).': success | time=3ms```
+```
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101017 'Add 'code_variants' column in 'issues' table'...
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101017 'Add 'code_variants' column in 'issues' table': success | time=11ms
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101018 'Fix different uuids for subportfolios'...
@@ -214,7 +219,8 @@ WARNING: System::setSecurityManager will be removed in a future release
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101024 'Populate report_schedules table'...
 2023.08.04 04:53:16 INFO  web[][o.s.s.p.d.m.s.MassUpdate] 0 rows processed (0 items/sec)
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101024 'Populate report_schedules table': success | time=6ms
-2023.08.04 04:53:16 INFO  web[][DbMigrations] #101025 'Populate report_subscriptions table'...
+2023.08.04 04:53:16 INFO  web[][DbMigrations] #101025 'Populate```
+``` report_subscriptions table'...
 2023.08.04 04:53:16 INFO  web[][o.s.s.p.d.m.s.MassUpdate] 0 rows processed (0 items/sec)
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101025 'Populate report_subscriptions table': success | time=5ms
 2023.08.04 04:53:16 INFO  web[][DbMigrations] #101026 'Remove report properties'...
@@ -229,7 +235,8 @@ WARNING: System::setSecurityManager will be removed in a future release
 2023.08.04 04:53:17 INFO  web[][o.s.s.e.IndexCreator] Create index [metadatas]
 2023.08.04 04:53:17 INFO  web[][o.s.s.a.EmbeddedTomcat] HTTP connector enabled on port 9000
 2023.08.04 04:53:17 INFO  es[][o.e.c.m.MetadataCreateIndexService] [metadatas] creating index, cause [api], templates [], shards [1]/[0]
-2023.08.04 04:53:18 INFO  es[][o.e.c.r.a.AllocationService] current.health="GREEN" message="Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[metadatas][0]]])." previous.health="YELLOW" reason="shards started [[metadatas][0]]"
+2023.08.04 04:53:18 INFO  es[][o.e.c.r.a.AllocationService] current.health="GREEN" message="Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[metadatas][0]]]).```
+```" previous.health="YELLOW" reason="shards started [[metadatas][0]]"
 2023.08.04 04:53:18 INFO  web[][o.s.s.e.IndexCreator] Create mapping metadatas
 2023.08.04 04:53:18 INFO  es[][o.e.c.m.MetadataMappingService] [metadatas/ykmxnaO8T5W8MsyYNxUdDg] create_mapping
 2023.08.04 04:53:18 INFO  web[][o.s.s.e.IndexCreator] Create index [components]
@@ -244,7 +251,10 @@ WARNING: System::setSecurityManager will be removed in a future release
 2023.08.04 04:53:19 INFO  es[][o.e.c.m.MetadataMappingService] [projectmeasures/FNaOkqcyTR6FmSA33WB77g] create_mapping
 2023.08.04 04:53:19 INFO  web[][o.s.s.e.IndexCreator] Create index [rules]
 2023.08.04 04:53:19 INFO  es[][o.e.c.m.MetadataCreateIndexService] [rules] creating index, cause [api], templates [], shards [2]/[0]
-2023.08.04 04:53:19 INFO  es[][o.e.c.r.a.AllocationService] current.health="GREEN" message="Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[rules][0]]])." previous.health="YELLOW" reason="shards started [[rules][0]]"
+2023.08.04 04:53:19 INFO  es[][o.e.c.r.a.AllocationService] curr```
+``````
+``````
+```ent.health="GREEN" message="Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[rules][0]]])." previous.health="YELLOW" reason="shards started [[rules][0]]"
 2023.08.04 04:53:19 INFO  web[][o.s.s.e.IndexCreator] Create mapping rules
 2023.08.04 04:53:19 INFO  es[][o.e.c.m.MetadataMappingService] [rules/q5ef-pv1S82bju1NXVE_9A] create_mapping
 2023.08.04 04:53:19 INFO  web[][o.s.s.e.IndexCreator] Create index [issues]
@@ -268,7 +278,10 @@ WARNING: System::setSecurityManager will be removed in a future release
 2023.08.04 04:53:21 WARN  web[][o.s.a.s.w.WebService$Action] The response example is not set on action api/push/sonarlint_events
 2023.08.04 04:53:21 WARN  web[][o.s.a.s.w.WebService$Action] Since is not set on action api/cayc/issues_creation_histogram
 2023.08.04 04:53:21 WARN  web[][o.s.a.s.w.WebService$Action] The response example is not set on action api/cayc/issues_creation_histogram
-2023.08.04 04:53:21 INFO  web[][o.s.s.a.p.ExpiredSessionsCleaner] Purge of expired session tokens has removed 0 elements
+```
+``````
+``````
+```2023.08.04 04:53:21 INFO  web[][o.s.s.a.p.ExpiredSessionsCleaner] Purge of expired session tokens has removed 0 elements
 2023.08.04 04:53:21 INFO  web[][o.s.s.a.p.ExpiredSessionsCleaner] Purge of expired SAML message ids has removed 0 elements
 2023.08.04 04:53:21 INFO  web[][o.s.s.n.NotificationDaemon] Notification service started (delay 60 sec.)
 2023.08.04 04:53:21 INFO  web[][o.s.s.t.TelemetryDaemon] Sharing of SonarQube statistics is enabled.
@@ -300,7 +313,8 @@ WARNING: System::setSecurityManager will be removed in a future release
 2023.08.04 04:53:56 INFO  web[][o.s.s.q.RegisterQualityProfiles] Register profile php/Sonar way
 2023.08.04 04:53:56 INFO  web[][o.s.s.q.RegisterQualityProfiles] Register profile terraform/Sonar way
 2023.08.04 04:53:56 INFO  web[][o.s.s.q.RegisterQualityProfiles] Register profile text/Sonar way
-2023.08.04 04:53:56 INFO  web[][o.s.s.q.RegisterQualityProfiles] Register profile vbnet/Sonar way
+2023.08.04 04:53:56 INFO  web[][o.s.s.q.RegisterQualityProfiles]```
+``` Register profile vbnet/Sonar way
 2023.08.04 04:53:56 INFO  web[][o.s.s.q.RegisterQualityProfiles] Register profile cloudformation/Sonar way
 2023.08.04 04:53:56 INFO  web[][o.s.s.q.RegisterQualityProfiles] Register profile yaml/Sonar way
 2023.08.04 04:53:56 INFO  web[][o.s.s.q.RegisterQualityProfiles] Register profile ts/Sonar way
@@ -340,7 +354,9 @@ WARNING: System::setSecurityManager will be removed in a future release
 2023.08.04 04:53:57 INFO  web[][o.s.s.i.i.AsyncIssueIndexingImpl] Tasks characteristics deletion complete.
 2023.08.04 04:53:57 INFO  web[][o.s.s.i.i.AsyncIssueIndexingImpl] 0 branch found in need of issue sync.
 2023.08.04 04:53:57 INFO  web[][o.s.s.e.IndexerStartupTask] Trigger asynchronous indexing of type [issues/auth/issue] done | time=48ms
-2023.08.04 04:53:57 INFO  web[][o.s.s.e.IndexerStartupTask] Indexing of types [components/auth],[projectmeasures/auth],[issues/auth]...
+2023.08.04 04:53:57 INFO  web[][o.s.s.e.IndexerStartupTask] Inde```
+``````
+```xing of types [components/auth],[projectmeasures/auth],[issues/auth]...
 2023.08.04 04:53:57 INFO  web[][o.s.s.e.IndexerStartupTask] Indexing of types [components/auth],[projectmeasures/auth],[issues/auth] done | time=100ms
 2023.08.04 04:53:57 INFO  web[][o.s.s.q.ProjectsInWarningDaemon] Counting number of projects in warning is enabled.
 2023.08.04 04:53:57 INFO  web[][o.s.s.p.p.PlatformLevelStartup] Running Community Edition
@@ -369,3 +385,21 @@ WARNING: System::setSecurityManager will be removed in a future release
 2023.08.04 04:54:01 INFO  app[][o.s.a.SchedulerImpl] Process[ce] is up
 2023.08.04 04:54:01 INFO  app[][o.s.a.SchedulerImpl] SonarQube is operational
 </pre>
+
+You can start accessing SonarQube Dashboard at the below URL
+<pre>
+http://localhost:9000  
+</pre>
+
+Default login credentials will be
+<pre>
+username - admin
+password - admin
+</pre>
+
+When prompted to change password, you may change this to
+<pre>
+username - admin
+password - Admin@123
+</pre>
+
