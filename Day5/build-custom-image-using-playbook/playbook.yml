@@ -18,12 +18,13 @@
     ignore_errors: yes
 
   - name: Build ubuntu ansible node docker image
-    docker_image:
-      name: "{{item}}"
-      build:
-        dockerfile: Dockerfile
-        path: .
-        pull: no
-      state: present
-      source: build
-    with_list: "{{image_names}}"
+    shell: docker build -t tektutor/maven-latest:latest .
+    #    docker_image:
+    #  name: "{{item}}"
+    #  build:
+    #    dockerfile: Dockerfile
+    #    path: .
+    #    pull: no
+    #  state: present
+    #  source: build
+    #with_list: "{{image_names}}"
