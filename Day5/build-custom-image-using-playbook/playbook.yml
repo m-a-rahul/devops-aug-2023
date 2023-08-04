@@ -1,0 +1,29 @@
+- name: This playbook will build a custom docker image that has JDK 11 and Maven 3.x 
+  hosts: localhost
+
+  vars:
+  - image_names:
+    - tektutor/maven-latest
+
+  tasks:
+  - name: Delete all ansible node containers
+    shell: docker rm -f $(docker ps -aq --filter="name=ubuntu")
+    ignore_errors: yes
+
+  - name: Delete all ansible node images from local registry
+    docker_image:
+      name: "{{item}}"
+      state: absent
+    with_list: "{{image_names}}"
+    ignore_errors: yes
+
+  - name: Build ubuntu ansible node docker image
+    docker_image:
+      name: "{{item}}"
+      build:
+        dockerfile: Dockerfile
+        path: .
+        pull: no
+      state: present
+      source: build
+    with_list: "{{image_names}}"

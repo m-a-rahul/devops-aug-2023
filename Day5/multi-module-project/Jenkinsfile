@@ -1,12 +1,27 @@
 #!/usr/bin/env groovy
 
 pipeline {
-	agent {
-		label 'jenkins-docker-slave'
-	}
 
 	stages {
+		agent {
+			label 'any'
+		}
+		stage('Build Custom Docker Image') {
+			agent {
+				label 'built-in'
+			}
+			steps {
+				script {
+					dir("Day5/build-custom-image-using-playbook") {
+						sh "ansible-playbook playbook.yml"
+					}
+				}
+			}
+		}
 		stage('Compile') {
+			agent {
+				label 'jenkins-docker-slave'
+			}
 			steps {
 				script {
 					dir("Day5/multi-module-project") {
@@ -16,6 +31,9 @@ pipeline {
 			}
 		}
 		stage('Unit Test') {
+			agent {
+				label 'jenkins-docker-slave'
+			}
 			steps {
 				script {
 					dir("Day5/multi-module-project") {
@@ -25,6 +43,9 @@ pipeline {
 			}
 		}
 		stage('Package') {
+			agent {
+				label 'jenkins-docker-slave'
+			}
 			steps {
 				script {
 					dir("Day5/multi-module-project") {
@@ -34,6 +55,9 @@ pipeline {
 			}
 		}
 		stage('Install') {
+			agent {
+				label 'jenkins-docker-slave'
+			}
 			steps {
 				script {
 					dir("Day5/multi-module-project") {
@@ -43,6 +67,9 @@ pipeline {
 			}
 		}
 		stage('Deploy') {
+			agent {
+				label 'jenkins-docker-slave'
+			}
 			steps {
 				script {
 					dir("Day5/multi-module-project") {
