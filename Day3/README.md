@@ -85,7 +85,11 @@ Step 3/12 : RUN apt-get update && apt-get install -y openssh-server python3
 Get:1 http://security.ubuntu.com/ubuntu xenial-security InRelease [99.8 kB]
 Get:2 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
 Get:3 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [2052 kB]
-Get:4 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [99.8 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial-updates In
+Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
+￼￼Choose FilesNo file chosen
+Attach files by dragging & dropping, selecting or pasting them.
+Release [99.8 kB]
 Get:5 http://security.ubuntu.com/ubuntu xenial-security/restricted amd64 Packages [15.9 kB]
 Get:6 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [985 kB]
 Get:7 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [97.4 kB]
