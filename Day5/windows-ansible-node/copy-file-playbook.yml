@@ -1,0 +1,7 @@
+- name: This playbook will copy a file from your ansible controller machine to windows node
+  hosts: all
+  tasks:
+  - name: Copy file
+    win_copy:
+      src: copy-file-playbook.yml  
+      dest: C:\
