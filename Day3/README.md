@@ -2409,14 +2409,42 @@ or
 pip3 install "pywinrm>=0.3.0"
 ```
 
+## Creating a docker container on your RPS Lab machine to ping the windows ansible node
+First you need to create a Dockerfile with the below content
+```
+FROM ubuntu:22.04
+RUN apt update && apt install -y python3-pip python3 ansible vim net-tools iputils-ping git
+```
+You need to build an custom docker image with the above Dockerfile
+```
+docker build -t tektutor/ansible:latest .
+docker images
+```
+
+You need to create a container using your custom ansible docker image
+```
+docker run -dit --name ansible --hostname ansible tektutor/ansible:latest bash
+docker exec -it ansible bash
+```
+
+On the container, you can create an inventory with the below content
+```
+[windows]
+172.20.0.192
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=rps@12345
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+```
+
 ## Ping windows node from your Ansible Controller machine
 ```
-cd ~/devops-aug-2023
-git pull
-cd Day5/windows-ansible-node/
-
+docker exec -it ansible bash
 ansible -i inventory all -m win_ping
 ```
 
 Expected output
 ![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/175e5e33-f130-4b97-92d7-74c64566aed0)
+
