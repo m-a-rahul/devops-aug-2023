@@ -897,6 +897,18 @@ Expected output
 ![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/175e5e33-f130-4b97-92d7-74c64566aed0)
 
 
+## Copying a file from Ansible controller machine to Windows Ansible node using Ansible Playbook
+```
+docker exec -it ansible bash
+git clone https://github.com/tektutor/devops-aug-2023.git
+cd devops-aug-2023/Day5/windows-ansible-node
+ansible-playbook -i inventory all copy-file-playbook.yml
+```
+
+Expected output
+![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/54951146-70d0-45fa-a52d-64ed83f49ef1)
+
+
 ## Post Test URL
 <pre>
 https://app.mymapit.in/code4/tiny/dRdEYk  
