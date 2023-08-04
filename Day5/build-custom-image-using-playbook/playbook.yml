@@ -11,10 +11,11 @@
     ignore_errors: yes
 
   - name: Delete all ansible node images from local registry
-    docker_image:
-      name: "{{item}}"
-      state: absent
-    with_list: "{{image_names}}"
+    shell: docker rmi tektutor/maven-latest:latest
+    #docker_image:
+    #  name: "{{item}}"
+    #  state: absent
+    #with_list: "{{image_names}}"
     ignore_errors: yes
 
   - name: Build ubuntu ansible node docker image
