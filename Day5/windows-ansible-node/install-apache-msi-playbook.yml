@@ -1,0 +1,12 @@
+- name: This windows playbook will install Apache MSI
+  hosts: all
+  tasks:
+  - name: Download the Apache MSI installer package
+    win_get_urL
+      url: https://archive.apache.org/dist/httpd/binaries/win32/httpd-2.2.25-win32-x86-no-ssl.msi
+      dest: C:\httpd-2.2.25-win32-x86-no-ssl.msi
+
+  - name: Install Apache MSI
+    win_package:
+      path: C:\httpd-2.2.25-win32-x86-no-ssl.msi
+      state: present
