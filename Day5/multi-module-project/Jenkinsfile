@@ -1,0 +1,55 @@
+#!/usr/bin/env groovy
+
+pipeline {
+	agent {
+		label 'jenkins-docker-slave'
+	}
+
+	stages {
+		stage('Compile') {
+			steps {
+				script {
+					dir("Day5/multi-module-project") {
+						sh "mvn clean compile"
+					}
+				}
+			}
+		}
+		stage('Unit Test') {
+			steps {
+				script {
+					dir("Day5/multi-module-project") {
+						sh "mvn test -P test"
+					}
+				}
+			}
+		}
+		stage('Package') {
+			steps {
+				script {
+					dir("Day5/multi-module-project") {
+						sh "mvn package -P package"
+					}
+				}
+			}
+		}
+		stage('Install') {
+			steps {
+				script {
+					dir("Day5/multi-module-project") {
+						sh "mvn install -P install"
+					}
+				}
+			}
+		}
+		stage('Deploy') {
+			steps {
+				script {
+					dir("Day5/multi-module-project") {
+						sh "mvn deploy -P deploy"
+					}
+				}
+			}
+		}
+	}
+}
