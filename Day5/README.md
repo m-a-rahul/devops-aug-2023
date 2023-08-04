@@ -861,7 +861,7 @@ pip3 install "pywinrm>=0.3.0"
 First you need to create a Dockerfile with the below content
 ```
 FROM ubuntu:22.04
-RUN apt update && apt install -y python3-pip python3 ansible vim net-tools iputils-ping git
+RUN apt update && apt install -y python3 ansible vim git
 ```
 You need to build an custom docker image with the above Dockerfile
 ```
