@@ -159,3 +159,47 @@ Accessing Prometheus Dashboard from RPS Lab Machine Chrome browser
 ```
 http://localhost:9090
 ```
+
+You need to install Prometheus Metrics Plugin in Jenkins and restart jenkins from the terminal(stop and restart jenkins).  
+
+Once the Prometheus plugin is installed and Jenkins is restarted, you should be able to access the Jenkins metrics at this url
+```
+http://localhost:8080/prometheus
+```
+
+
+You need to edit the prometheus.yml file and replace your RPS machine Ip address in the place of 192.168.1.108 before copying to the prometheus container
+```
+cd ~/devops-aug-2023
+git pull
+
+cd Day4/prometheus
+docker cp prometheus.yml prometheus:/opt/bitnami/prometheus/conf/prometheus.yml
+docker restart prometheus
+docker ps
+```
+
+Now check the Status-->Targets menu in the Prometheus Dashboard from your RPS chrome browser. You should see two target, both showing Up. This might take few seconds to update.
+
+## Lab - Setup Grafana
+
+Create Grafana container
+```
+docker run -d --name=grafana -p 3000:3000 grafana/grafana
+```
+
+Accessing Grafana Dashboard
+```
+http://localhost:3000
+```
+Defaut Login Credentials
+<pre>
+username - admin
+password - admin
+</pre>
+
+Change the Grafana password to
+<pre>
+username - admin
+password - Admin@123
+</pre>
