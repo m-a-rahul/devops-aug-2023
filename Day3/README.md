@@ -2408,3 +2408,15 @@ pip install "pywinrm>=0.3.0"
 or
 pip3 install "pywinrm>=0.3.0"
 ```
+
+## Ping windows node from your Ansible Controller machine
+```
+cd ~/devops-aug-2023
+git pull
+cd Day5/windows-ansible-node/
+
+ansible -i inventory all -m win_ping
+```
+
+Expected output
+![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/175e5e33-f130-4b97-92d7-74c64566aed0)
