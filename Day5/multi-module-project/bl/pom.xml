@@ -10,7 +10,6 @@
 		<artifactId>crm</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<!--
 	<dependencies>
 		<dependency>
 			<groupId>org.tektutor</groupId>
@@ -18,5 +17,4 @@
 			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
-	-->
 </project>
