@@ -908,6 +908,18 @@ ansible-playbook -i inventory all copy-file-playbook.yml
 Expected output
 ![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/54951146-70d0-45fa-a52d-64ed83f49ef1)
 
+## Installing Apache MSI 
+```
+docker exec -it ansible bash
+cd devops-aug-2023
+git pull
+cd Day5/windows-ansible-node
+ansible-playbook -i inventory all install-apache-msi-playbook.yml
+```
+
+Expected output
+![image](https://github.com/tektutor/devops-aug-2023/assets/12674043/dd14e1d6-f7b9-4725-a98c-ff1901f1419b)
+
 
 ## Post Test URL
 <pre>
